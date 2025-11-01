@@ -17,7 +17,7 @@
     @keyframes floatxy { 0%{ transform:translate(0,0);} 25%{ transform:translate(40px,-20px);} 50%{ transform:translate(-20px,20px);} 100%{ transform:translate(0,0);} }
     /* card hover tilt illusion */
     .card:hover { transform: translateY(-4px) perspective(1000px) rotateX(1.5deg) rotateY(-1.5deg); }
-      /* animated gradient headline */
+    /* animated gradient headline */
     .gradient-text{background:linear-gradient(90deg,#fff,rgba(168,85,247,.9),rgba(59,130,246,.9),#fff);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:shine 8s linear infinite}
     @keyframes shine{to{background-position:200% 0}}
     /* glowing aura behind hero */
@@ -26,6 +26,7 @@
       radial-gradient(45% 65% at 70% 60%, rgba(59,130,246,.35), transparent 60%);
       animation:pulse 12s ease-in-out infinite}
     @keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.06)}}
+/* Two-up before/after layout — slider removed */
   </style>
 </head>
 <body class="text-gray-100">
@@ -45,6 +46,7 @@
       <nav class="hidden md:flex gap-6 text-sm text-white/60">
         <a href="#/coaching" class="hover:text-white/90 transition">Coaching</a>
         <a href="#sources" class="hover:text-white/90 transition">Sources</a>
+        <a href="#transformations" class="hover:text-white/90 transition">Transformations</a>
       </nav>
     </div>
   </header>
@@ -59,6 +61,7 @@
         <p class="fade-up [animation-delay:.12s] mt-3 max-w-3xl mx-auto text-sm md:text-base text-white/70 leading-relaxed">
           Hey! My name is Will. I've spent years studying and applying knowledge in anabolics, peptides, and pharmacology. Making TikTok's about these topics is a huge passion of mine. My goal is to take the guesswork out of these complex topics, educate you clearly, and design safe, effective protocols tailored to your goals. Scroll below to see what's included in my coaching services.
         </p>
+        <p class="fade-up [animation-delay:.18s] mt-2 max-w-3xl mx-auto text-base md:text-lg text-white/90">See Client Transformations Below</p>
       </div>
     </div>
 
@@ -140,6 +143,84 @@
       </a>
     </div>
 
+    <!-- TRANSFORMATIONS -->
+    <section id="transformations" class="fade-up [animation-delay:.06s]">
+      <div class="mt-6 md:mt-10">
+        <div class="text-center mb-6">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Client Transformations</h2>
+          <p class="mt-2 text-sm text-white/70">Real results. Before and after side‑by‑side.</p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <!-- Card 1 -->
+          <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f1218] p-3">
+            <div class="rounded-xl overflow-hidden">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-[1px] bg-white/10">
+                <figure class="relative overflow-hidden" style="aspect-ratio: 4 / 5;">
+                  <img alt="Before" class="absolute inset-0 w-full h-full object-cover object-center" src="https://i.imgur.com/Wxt234J.png"/>
+                  <figcaption class="absolute top-2 left-2 rounded-md bg-black/40 px-2 py-1 text-[10px] uppercase tracking-wide">Before</figcaption>
+                </figure>
+                <figure class="relative overflow-hidden" style="aspect-ratio: 4 / 5;">
+                  <img alt="After" class="absolute inset-0 w-full h-full object-cover object-center" src="https://i.imgur.com/C2HIqGP.png"/>
+                  <figcaption class="absolute top-2 right-2 rounded-md bg-black/40 px-2 py-1 text-[10px] uppercase tracking-wide">After</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="px-1 pt-3">
+              <div class="text-sm font-medium text-white/90">Client 1</div>
+              <div class="text-xs text-white/60">22 weeks • Grew about 2 inches at 18 (5'10 -> 6'1)</div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f1218] p-3">
+            <div class="rounded-xl overflow-hidden">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-[1px] bg-white/10">
+                <figure class="relative overflow-hidden" style="aspect-ratio: 4 / 5;">
+                  <img alt="Before" class="absolute inset-0 w-full h-full object-cover object-center" src="https://i.imgur.com/9vENtP6.jpeg"/>
+                  <figcaption class="absolute top-2 left-2 rounded-md bg-black/40 px-2 py-1 text-[10px] uppercase tracking-wide">Before</figcaption>
+                </figure>
+                <figure class="relative overflow-hidden" style="aspect-ratio: 4 / 5;">
+                  <img alt="After" class="absolute inset-0 w-full h-full object-cover object-center" src="https://i.imgur.com/I1fUSxr.jpeg"/>
+                  <figcaption class="absolute top-2 right-2 rounded-md bg-black/40 px-2 py-1 text-[10px] uppercase tracking-wide">After</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="px-1 pt-3">
+              <div class="text-sm font-medium text-white/90">Client 2</div>
+              <div class="text-xs text-white/60">16 weeks • Grew about 2.3 inches (5'11 to 6'1)</div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f1218] p-3">
+            <div class="rounded-xl overflow-hidden">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-[1px] bg-white/10">
+                <figure class="relative overflow-hidden" style="aspect-ratio: 4 / 5;">
+                  <img alt="Before" class="absolute inset-0 w-full h-full object-cover object-center" src="https://i.imgur.com/BH0aAtz.jpeg"/>
+                  <figcaption class="absolute top-2 left-2 rounded-md bg-black/40 px-2 py-1 text-[10px] uppercase tracking-wide">Before</figcaption>
+                </figure>
+                <figure class="relative overflow-hidden" style="aspect-ratio: 4 / 5;">
+                  <img alt="After" class="absolute inset-0 w-full h-full object-cover object-center" src="https://i.imgur.com/83sblRI.jpeg"/>
+                  <figcaption class="absolute top-2 right-2 rounded-md bg-black/40 px-2 py-1 text-[10px] uppercase tracking-wide">After</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="px-1 pt-3">
+              <div class="text-sm font-medium text-white/90">Client 3</div>
+              <div class="text-xs text-white/60">30lb of mass in 12 weeks. natty -> enhanced with the stack I designed him. Grew about an inch</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA under grid -->
+        <div class="text-center mt-8">
+          <button data-open-contact class="inline-flex items-center justify-center rounded-2xl bg-[#2563eb] hover:bg-[#1d4ed8] px-6 py-3 text-sm font-semibold text-white transition shadow-[0_10px_30px_-10px_rgba(37,99,235,0.7)]">Want yours featured? Get started</button>
+          <p class="mt-3 text-xs text-white/50">Images displayed with client consent. Individual results vary.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Disclaimer -->
     <p class="mt-12 text-xs text-white/50 max-w-3xl mx-auto leading-relaxed">I do not sell, distribute, or facilitate the purchase of controlled or illegal substances. This product is a list of information offered for educational/research purposes only. By buying you must comply with all local laws. Use at your own risk. Consult a qualified medical professional before making health decisions.</p>
   </main>
@@ -179,53 +260,53 @@
     </div>
   </section>
 
-<!-- Contact Modal -->
-<div id="contact-modal" class="hidden fixed inset-0 z-[90]">
-  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-close-contact></div>
-  <div class="absolute inset-0 grid place-items-center p-6">
-    <div class="relative w-full max-w-md overflow-hidden rounded-2xl border border-white/10 bg-[#0f1218] shadow-2xl">
-      <div class="absolute -inset-px opacity-40 blur-2xl" style="background:radial-gradient(24rem 14rem at 20% 0%, rgba(168,85,247,.25), transparent 60%), radial-gradient(20rem 12rem at 80% 100%, rgba(59,130,246,.25), transparent 60%)"></div>
-      <div class="relative p-6">
-        <div class="flex items-start justify-between gap-4">
-          <h3 class="text-lg font-semibold text-white/90 tracking-tight">Get Started</h3>
-          <button data-close-contact class="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-white/70 hover:text-white hover:bg-white/10">Close</button>
-        </div>
-        <p class="mt-2 text-sm text-white/70">Thanks for your interest! To Purchase Coaching, A Consultation, Or The Source List, Contact Me On Either: </p>
-        <!-- FIXED CONTACT OPTIONS -->
-        <div class="mt-4 space-y-3 text-sm">
-          <div class="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-            <span class="text-white/80">Text</span>
-            <span class="font-medium text-white">+1 615-854-1948</span>
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="hidden fixed inset-0 z-[90]">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-close-contact></div>
+    <div class="absolute inset-0 grid place-items-center p-6">
+      <div class="relative w-full max-w-md overflow-hidden rounded-2xl border border-white/10 bg-[#0f1218] shadow-2xl">
+        <div class="absolute -inset-px opacity-40 blur-2xl" style="background:radial-gradient(24rem 14rem at 20% 0%, rgba(168,85,247,.25), transparent 60%), radial-gradient(20rem 12rem at 80% 100%, rgba(59,130,246,.25), transparent 60%)"></div>
+        <div class="relative p-6">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-lg font-semibold text-white/90 tracking-tight">Get Started</h3>
+            <button data-close-contact class="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-white/70 hover:text-white hover:bg-white/10">Close</button>
           </div>
-          <div class="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-            <span class="text-white/80">Tiktok DM</span>
-            <a href="https://www.tiktok.com/@enhancements_explained" target="_blank" rel="noopener noreferrer" class="font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">@enhancements_explained</a>
+          <p class="mt-2 text-sm text-white/70">Thanks for your interest! To Purchase Coaching, A Consultation, Or The Source List, Contact Me On Either: </p>
+          <!-- FIXED CONTACT OPTIONS -->
+          <div class="mt-4 space-y-3 text-sm">
+            <div class="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+              <span class="text-white/80">Text</span>
+              <span class="font-medium text-white">+1 615-854-1948</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+              <span class="text-white/80">Tiktok DM</span>
+              <a href="https://www.tiktok.com/@enhancements_explained" target="_blank" rel="noopener noreferrer" class="font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">@enhancements_explained</a>
+            </div>
           </div>
-        </div>
-        <!-- PAYMENT METHODS (unchanged) -->
-        <div class="mt-6">
-          <h4 class="text-sm font-semibold text-white/80">Payment Methods</h4>
-          <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
-              <div class="h-9 w-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-white/80 font-semibold">V</div>
-              <div><div class="text-white/90 font-medium leading-tight">Venmo</div><div class="text-xs text-white/60">DM for handle</div></div>
-            </div>
-            <div class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
-              <div class="h-9 w-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-white/80 font-semibold">Z</div>
-              <div><div class="text-white/90 font-medium leading-tight">Zelle</div><div class="text-xs text-white/60">DM for handle</div></div>
-            </div>
-            <div class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
-              <div class="h-9 w-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-white/80 font-semibold">P</div>
-              <div><div class="text-white/90 font-medium leading-tight">PayPal</div><div class="text-xs text-white/60">DM for handle</div></div>
+          <!-- PAYMENT METHODS (unchanged) -->
+          <div class="mt-6">
+            <h4 class="text-sm font-semibold text-white/80">Payment Methods</h4>
+            <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
+                <div class="h-9 w-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-white/80 font-semibold">V</div>
+                <div><div class="text-white/90 font-medium leading-tight">Venmo</div><div class="text-xs text-white/60">DM for handle</div></div>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
+                <div class="h-9 w-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-white/80 font-semibold">Z</div>
+                <div><div class="text-white/90 font-medium leading-tight">Zelle</div><div class="text-xs text-white/60">DM for handle</div></div>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
+                <div class="h-9 w-9 shrink-0 rounded-full bg-white/10 grid place-items-center text-white/80 font-semibold">P</div>
+                <div><div class="text-white/90 font-medium leading-tight">PayPal</div><div class="text-xs text-white/60">DM for handle</div></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-  <!-- Routing + Modal JS (vanilla) -->
+  <!-- Routing + Modal JS (vanilla) + BA slider init -->
   <script>
     const home = document.getElementById('home');
     const coaching = document.getElementById('coaching');
@@ -251,8 +332,8 @@
     modal?.querySelector('[data-close-contact]')?.addEventListener('click', () => modal.classList.add('hidden'));
     modal?.querySelector('[data-close-contact]')?.addEventListener('click', () => modal.classList.add('hidden'));
     modal?.addEventListener('click', (e) => { if (e.target.hasAttribute('data-close-contact')) modal.classList.add('hidden'); });
-  </script>
+// (before/after slider removed)
 
-  
+  </script>
 </body>
 </html>
