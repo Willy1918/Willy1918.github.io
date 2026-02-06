@@ -17,14 +17,20 @@
     }
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+    html{ background: var(--bg0); background-color: var(--bg0); }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 25% 15%, #151515 0%, var(--bg0) 55%) fixed;
+      background: radial-gradient(1200px 700px at 25% 15%, #151515 0%, var(--bg0) 55%);
+      background-attachment: fixed;
       color:var(--text);
+      background-color: var(--bg0);
+      overflow-x: hidden;
+      padding-bottom: env(safe-area-inset-bottom);
     }
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
+    body{ overscroll-behavior-y: none; }
 
     .container{ width:min(1040px, calc(100% - 48px)); margin:0 auto; }
 
@@ -47,7 +53,8 @@
 
     /* Landing */
     .center-wrap{
-      min-height: calc(100vh - 140px);
+      min-height: calc(100svh - 140px);
+      min-height: calc(100dvh - 140px);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -233,8 +240,22 @@
 
     /* small */
     @media (max-width: 900px){
+      .container{ width: calc(100% - 28px); }
+      body{ background-attachment: scroll; }
       .grid-2{ grid-template-columns: 1fr; }
-      .detail-grid{ grid-template-columns: 1fr; }
+      /* Put the purchase card + FAQ near the top on mobile so the CTA isn't buried */
+      .detail-grid{ display:flex; flex-direction:column; gap:18px; }
+      .detail-grid > aside{ order:1; }
+      .detail-grid > main{ order:2; }
+      .sidebar{ position:static; }
+      /* Avoid cropped transformation images on mobile */
+      .hero img{ height:auto; max-height: 70vh; object-fit:contain; }
+      .side-media{ height:auto; }
+      .side-media img{ height:auto; max-height: 60vh; object-fit:contain; }
+      /* Reduce top/bottom "white flash" on mobile bounce */
+      html,body{ background-color: var(--bg0); }
+    }
+    .detail-grid{ grid-template-columns: 1fr; }
       .sidebar{ position:static; }
     }
   </style>
@@ -338,10 +359,7 @@
             <li>Literally anything else you can think of....</li>
           </ul>
 
-          <div class="smallprint">
-This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information, and you agree to hold the provider harmless from any related claims.
-          </div>
-        </main>
+</main>
 
         <aside class="sidebar">
           <div class="sidecard">
@@ -407,6 +425,9 @@ This information is provided for educational and informational purposes only and
           </div>
         </aside>
       </div>
+    
+
+  <div class="smallprint" style="margin-top:18px;">This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information, and you agree to hold the provider harmless from any related claims.</div>
     </section>
 
     <!-- SOURCES DETAIL -->
