@@ -3,574 +3,574 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EnhancementsExplained Coaching</title>
+  <title>EnhancementsExplained — Coaching & Source List</title>
+  <meta name="description" content="Coaching services and a curated source list." />
   <style>
     :root{
-      --bg0:#0b0b0b;
-      --card:#141414;
-      --muted:#a7a7a7;
-      --text:#f2f2f2;
-      --blue:#2563eb;
-      --blue2:#1d4ed8;
-      --shadow: 0 12px 30px rgba(0,0,0,.45);
-      --r20:20px;
+      --bg:#06080c;
+      --panel:#0b0f17;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.085);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --faint: rgba(255,255,255,.55);
+      --line: rgba(255,255,255,.11);
+      --blue: #2b66ff;
+      --radius: 18px;
+      --radius2: 26px;
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --max: 1140px;
+      --maxNarrow: 980px;
     }
-    *{ box-sizing:border-box; }
-    html{ background: var(--bg0); }
-    html,body{ height:100%; }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      min-height: 100svh;
-      background-color: var(--bg0);
-      overscroll-behavior-y: none;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 25% 15%, #151515 0%, var(--bg0) 55%) fixed;
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(1100px 680px at 20% 10%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(900px 620px at 80% 25%, rgba(45,102,255,.12), transparent 60%),
+        radial-gradient(1000px 900px at 50% 100%, rgba(255,255,255,.05), transparent 60%),
+        var(--bg);
     }
-    a{ color:inherit; text-decoration:none; }
-    img{ max-width:100%; display:block; }
-
-    .container{ width:min(1040px, calc(100% - 48px)); margin:0 auto; padding-bottom: env(safe-area-inset-bottom); }
-
-    /* Top */
-    .topbar{ display:flex; align-items:center; gap:16px; padding:34px 0 18px; }
-    .logo{
-      width:64px; height:64px;
-      border-radius:18px;
-      background: linear-gradient(180deg, #1e3a8a 0%, #0b1b3a 100%);
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .wrap.narrow{max-width:var(--maxNarrow)}
+    .top{
+      position:sticky; top:0; z-index:50;
+      background: rgba(6,8,12,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .toprow{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:850; letter-spacing:.2px;
+    }
+    .icon{
+      width:28px; height:28px; border-radius:10px;
+      background: linear-gradient(180deg, rgba(45,102,255,1), rgba(45,102,255,.25));
       display:grid; place-items:center;
-      box-shadow: 0 10px 24px rgba(0,0,0,.45);
-      border:1px solid rgba(255,255,255,.06);
+      font-size:13px; font-weight:900;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 14px 40px rgba(43,102,255,.20);
     }
-    .logo span{ font-weight:800; font-size:26px; letter-spacing:.5px; color:#8fb2ff; }
-    .brand{ font-weight:700; font-size:18px; color:#e9e9e9; }
-
-    /* Sections */
-    .section{ display:none; }
-    .section.active{ display:block; }
-
-    /* Landing */
-    .center-wrap{
-      min-height: calc(100vh - 140px);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 0 40px;
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
     }
-    .grid-2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:26px;
-      width:min(980px, 100%);
-      justify-items:center;
-    }
-    .card{
-      background: linear-gradient(180deg, #141414 0%, #101010 100%);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius: var(--r20);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      max-width: 460px;
-      width: 100%;
-    }
-    .card-media{ aspect-ratio: 16 / 9; height:auto; background:#000; overflow:hidden; }
-    .card-media img{ width:100%; height:100%; object-fit:cover; filter: contrast(1.02) saturate(1.02); }
-    .card-body{ padding:18px 18px 16px; }
-    .card-row{ display:flex; gap:10px; align-items:flex-start; }
-    .badge-icon{
-      width:30px;height:30px;
-      border-radius:10px;
-      background: linear-gradient(180deg, #1e3a8a 0%, #0b1b3a 100%);
-      border:1px solid rgba(255,255,255,.06);
-      display:grid; place-items:center;
-      flex:0 0 auto;
-    }
-    .badge-icon span{ font-weight:800; font-size:13px; color:#8fb2ff; }
-    .card-title{ font-weight:700; font-size:16px; margin-top:2px; }
-    .card-sub{ margin-top:6px; font-size:13px; line-height:1.4; color:var(--muted); }
-    .price-row{ display:flex; align-items:center; gap:10px; margin-top:12px; font-size:13px; color:var(--muted); }
-    .strike{ text-decoration:line-through; opacity:.7; }
-    .price-strong{ color:#eaeaea; font-weight:700; }
-    .pill{
-      font-size:11px;
-      padding:3px 8px;
-      border-radius:999px;
-      background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.08);
-      color:#eaeaea;
-    }
-    .card-cta{ padding:0 16px 16px; }
-    .btn{
-      width:100%;
-      height:50px;
-      border-radius:14px;
+    .nav a, .nav button{
       border:0;
-      font-weight:700;
-      font-size:14px;
-      cursor:pointer;
-      background: var(--blue);
-      color:#fff;
-    }
-    .btn:hover{ background: var(--blue2); }
-    .btn:active{ transform: translateY(1px); }
-
-    /* Detail pages */
-    .page{ padding-bottom: 80px; }
-    .backlink{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      color:var(--muted);
-      font-size:14px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .backlink:hover{ color:#d6d6d6; }
-
-    .detail-grid{
-      display:grid;
-      grid-template-columns: 2fr 1fr;
-      gap:26px;
-      align-items:start;
-      padding-top: 8px;
-    }
-    .hero{
-      border-radius: var(--r20);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.06);
-      background:#000;
-      box-shadow: var(--shadow);
-    }
-    .hero img{ width:100%; height:310px; object-fit:cover; }
-
-    .meta-bar{ margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
-    .meta-chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 11px;
-      border-radius:13px;
-      background: rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
+      background: transparent;
       color: var(--muted);
-      font-size:13px;
-    }
-    .meta-dot{ width:7px;height:7px;border-radius:50%; background: rgba(255,255,255,.25); }
-
-    .h1{ margin:16px 0 12px; font-size:21px; font-weight:800; letter-spacing:.2px; }
-    .bullets{ margin: 0; padding-left: 20px; color:#d7d7d7; font-size:15px; line-height:1.75; }
-    .smallprint{
-      margin-top: 16px;
-      color: var(--muted);
-      font-size:11px;
-      line-height:1.6;
-      white-space:pre-wrap;
-    }
-
-    .sidebar{ position:sticky; top:18px; }
-    .sidecard{
-      border-radius: var(--r20);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.06);
-      background: linear-gradient(180deg, #141414 0%, #101010 100%);
-      box-shadow: var(--shadow);
-    }
-    .side-media{ height:160px; background:#000; }
-    .side-media img{ width:100%; height:100%; object-fit:cover; }
-    .side-body{ padding:14px; }
-    .side-title{ font-weight:800; font-size:16px; }
-    .side-price{ margin-top:10px; display:flex; align-items:center; gap:8px; color:var(--muted); font-size:13px; }
-    .side-cta{ padding: 12px 14px 14px; }
-    .btn-secondary{
-      width:100%;
-      height:50px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      color:#bdbdbd;
-      font-weight:700;
-      font-size:14px;
-      cursor:not-allowed;
-    }
-
-    .faq{
-      margin-top:14px;
-      border-radius: var(--r20);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.06);
-      background: rgba(255,255,255,.03);
-    }
-    .faq-item{ border-top:1px solid rgba(255,255,255,.06); }
-    .faq-item:first-child{ border-top:0; }
-    .faq-q{
-      width:100%;
-      text-align:left;
-      background:transparent;
-      color:#eaeaea;
-      border:0;
-      padding: 15px 14px;
-      font-size:14px;
-      font-weight:700;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      cursor:pointer;
-    }
-    .faq-a{
-      padding: 0 14px 14px;
-      color: var(--muted);
-      font-size:13px;
-      line-height:1.6;
-      display:none;
-    }
-    .faq-item.open .faq-a{ display:block; }
-    .plus{
-      width:18px;height:18px;
-      border-radius:6px;
-      display:grid; place-items:center;
-      color:#cfcfcf;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      font-weight:900;
-    }
-    .mobile-buybar{
-      display:none;
-    }
-    .mobile-buybar .mb-left{ display:flex; flex-direction:column; gap:2px; }
-    .mobile-buybar .mb-title{ font-weight:800; font-size:13px; color:#f0f0f0; }
-    .mobile-buybar .mb-price{ font-size:12px; color:var(--muted); }
-    .mobile-buybar .mb-btn{
-      height:46px;
-      padding: 0 16px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      color:#bdbdbd;
       font-weight:800;
       font-size:14px;
-      cursor:not-allowed;
-      white-space:nowrap;
+      padding:10px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .nav a:hover, .nav button:hover{
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+    .nav .active{
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.10);
     }
 
-    .faq-item.open .plus{ transform: rotate(45deg); }
+    main{padding: 26px 0 44px}
+    .panel{display:none}
+    .panel.active{display:block}
 
-    /* small */
-    @media (max-width: 900px){
-      .container{ width: calc(100% - 28px); }
-      .topbar{ padding: 22px 0 14px; }
-      .logo{ width:56px; height:56px; border-radius:16px; }
-      .logo span{ font-size:22px; }
-      .brand{ font-size:16px; }
+    /* Homepage product cards (like screenshot 1) */
+    .cards2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+      margin-top: 18px;
+    }
+    .product{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .product .img{
+      height: 240px;
+      background: rgba(0,0,0,.22);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .product .img img{
+      width:100%; height:100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .product .body{padding:14px 16px 16px}
+    .rowline{
+      display:flex; align-items:center; gap:10px;
+      margin-top:10px; flex-wrap:wrap;
+      color: var(--muted);
+      font-weight:800;
+      font-size:13px;
+    }
+    .mini{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+    }
+    .title{
+      margin:10px 0 6px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing:-.2px;
+    }
+    .desc{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.4;
+    }
+    .pricebar{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      margin-top:12px;
+      color: var(--muted);
+      font-weight:850;
+      font-size: 13px;
+    }
+    .strike{opacity:.55; text-decoration: line-through}
+    .save{
+      font-size:12px;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight:900;
+    }
+    .ctaBtn{
+      margin-top:12px;
+      width:100%;
+      display:flex; align-items:center; justify-content:center;
+      min-height:48px;
+      border-radius: 14px;
+      border: 0;
+      font-weight: 950;
+      letter-spacing:.1px;
+      background: var(--blue);
+      color: white;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .ctaBtn:hover{filter:brightness(1.06); transform: translateY(-1px)}
+    .ctaBtn:active{transform: translateY(0px)}
 
-      .grid-2{ grid-template-columns: 1fr; gap:18px; }
-      .card{ max-width: 520px; }
-      .card-body{ padding:16px 16px 14px; }
-      .card-title{ font-size:17px; }
-      .card-sub{ font-size:14px; }
-      .price-row{ font-size:14px; }
+    /* Product detail layout (like screenshot 2/3) */
+    .detail{
+      display:grid;
+      grid-template-columns: 1.45fr .55fr;
+      gap:18px;
+      align-items:start;
+      margin-top: 12px;
+    }
+    .left{
+      min-width:0;
+    }
+    .heroImg{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      box-shadow: var(--shadow);
+    }
+    .heroImg img{
+      width:100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center;
+    }
 
-      .detail-grid{ grid-template-columns: 1fr; gap:18px; }
-      .sidebar{ position:static; }
-      .hero img{ height: 220px; }
-      .h1{ font-size:20px; }
+    /* Coaching page: transformations featured */
+    .transGrid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+    }
+    .featured{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+    .featured img{
+      width:100%;
+      height: 520px;
+      object-fit: contain; /* show full before/after */
+      background: rgba(0,0,0,.30);
+    }
+    .badge{
+      position:absolute; left:14px; top:14px;
+      padding:7px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(8px);
+      font-weight: 950;
+      font-size: 13px;
+    }
+    .stack{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    .stack .tile{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+    .stack .tile img{
+      width:100%;
+      height: 252px;
+      object-fit: contain;
+      background: rgba(0,0,0,.30);
+    }
 
-      .page{ padding-bottom: 120px; } /* room for sticky buy bar */
-      .mobile-buybar{
-        display:flex;
-        position:fixed;
-        left:0; right:0; bottom:0;
-        padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
-        background: rgba(10,10,10,.92);
-        border-top: 1px solid rgba(255,255,255,.10);
-        backdrop-filter: blur(14px);
-        z-index: 50;
-        align-items:center;
-        justify-content:space-between;
-        gap: 14px;
-      }
+    .metaRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .h1{
+      margin:14px 0 8px;
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 950;
+      letter-spacing:-.4px;
+      line-height:1.15;
+    }
+    .bullets{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.55;
+    }
+    .bullets li{margin:6px 0}
+
+    .legal{
+      margin-top: 14px;
+      color: var(--faint);
+      font-size: 12px;
+      line-height:1.55;
+    }
+
+    /* Purchase box */
+    .buy{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.07);
+      box-shadow: var(--shadow);
+      padding:14px;
+      position: sticky;
+      top: 78px;
+    }
+    .buyTitle{
+      font-weight: 950;
+      letter-spacing:-.2px;
+      margin:0 0 8px;
+    }
+    .buyPrice{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 13px;
+      margin: 6px 0 10px;
+    }
+    .buyBtn{
+      width:100%;
+      min-height:48px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      font-weight: 950;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .buyBtn.primary{
+      background: var(--blue);
+      border: 0;
+      color: white;
+    }
+    .buyBtn:hover{filter:brightness(1.05); transform: translateY(-1px)}
+    .buyBtn:active{transform: translateY(0px)}
+    .divider{height:1px; background: rgba(255,255,255,.10); margin:14px 0}
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+      padding: 18px 0 26px;
+      color: var(--faint);
+      font-size: 12px;
+    }
+
+    /* Mobile */
+    @media (max-width: 980px){
+      .cards2{grid-template-columns:1fr}
+      .detail{grid-template-columns:1fr}
+      .buy{position:relative; top:auto}
+      .heroImg img{height: 320px}
+      .transGrid{grid-template-columns:1fr}
+      .featured img{height: 460px}
+      .stack .tile img{height: 260px}
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <!-- LANDING -->
-    <section id="home" class="section active">
-      <header class="topbar">
-        <div class="logo"><span>EC</span></div>
-        <div class="brand">EnhancementsExplained Coaching</div>
-      </header>
 
-      <main class="center-wrap">
-        <div style="width:100%;">
-          <div class="grid-2">
-            <!-- Coaching card -->
-            <div class="card" role="button" tabindex="0" onclick="go('#coaching')" onkeypress="if(event.key==='Enter'){go('#coaching')}">
-              <div class="card-media">
-                <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75" alt="Coaching transformation" />
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="toprow">
+        <div class="brand">
+          <div class="icon">EC</div>
+          <div>EnhancementsExplained Coaching</div>
+        </div>
+        <div class="nav">
+          <button class="active" data-route="home">Home</button>
+          <button data-route="coaching">Coaching</button>
+          <button data-route="source">Source List</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <!-- HOME -->
+      <section id="home" class="panel active">
+        <div class="wrap narrow">
+          <div class="cards2">
+
+            <!-- Coaching card (homepage uses ONLY side profile image) -->
+            <div class="product" role="article" aria-label="Coaching product card">
+              <div class="img">
+                <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75"
+                     alt="Coaching transformation (side profile)" loading="eager" />
               </div>
-              <div class="card-body">
-                <div class="card-row">
-                  <div class="badge-icon"><span>EC</span></div>
-                  <div>
-                    <div class="card-title">Coaching - 1 Month</div>
-                    <div class="card-sub">1 On 1 Coaching | Customized Protocols | In-Depth Explanations | 24/7 DM Access</div>
-                    <div class="price-row">
-                      <span class="strike">$98.75</span>
-                      <span class="price-strong">$79 / month</span>
-                      <span class="pill">Save 20%</span>
-                    </div>
-                  </div>
+              <div class="body">
+                <div class="rowline">
+                  <span class="mini"><span class="icon" style="width:18px;height:18px;border-radius:7px;font-size:10px">EC</span> Coaching - 1 Month</span>
                 </div>
-              </div>
-              <div class="card-cta">
-                <button class="btn" type="button" onclick="event.stopPropagation(); go('#coaching')">Join now</button>
+
+                <div class="title">Coaching - 1 Month</div>
+                <p class="desc">1 On 1 Coaching | Customized Protocols | In-Depth Explanations | 24/7 DM Access</p>
+
+                <div class="pricebar">
+                  <span class="strike">$98.75</span>
+                  <span style="color:var(--text)">$79 / month</span>
+                  <span class="save">Save 20%</span>
+                </div>
+
+                <button class="ctaBtn" data-route="coaching">Join now</button>
               </div>
             </div>
 
             <!-- Source list card -->
-            <div class="card" role="button" tabindex="0" onclick="go('#sources')" onkeypress="if(event.key==='Enter'){go('#sources')}">
-              <div class="card-media">
-                <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F281d8966-5a1b-4781-b2cd-8d609e1a74ac.png@avif?w=3840&q=75" alt="Source list" />
+            <div class="product" role="article" aria-label="Source list product card">
+              <div class="img">
+                <img src="https://i.imgur.com/8ar7sag.png" alt="Source List banner" loading="lazy" />
               </div>
-              <div class="card-body">
-                <div class="card-row">
-                  <div class="badge-icon"><span>EC</span></div>
-                  <div>
-                    <div class="card-title">Source List</div>
-                    <div class="card-sub">Oils | Peps | HGH | Ancillaries | Infigratinib + Vosoritide | Nootropics | +MORE</div>
-                    <div class="price-row">
-                      <span class="strike">$23.75</span>
-                      <span class="price-strong">$19</span>
-                      <span class="pill">Save 20%</span>
-                    </div>
-                  </div>
+              <div class="body">
+                <div class="rowline">
+                  <span class="mini"><span class="icon" style="width:18px;height:18px;border-radius:7px;font-size:10px">EC</span> Source List</span>
+                </div>
+
+                <div class="title">Source List</div>
+                <p class="desc">Oils | Peps | HGH | Ancillaries | Infigratinib + Vosoritide | Nootropics | +MORE</p>
+
+                <div class="pricebar">
+                  <span class="strike">$23.75</span>
+                  <span style="color:var(--text)">$19</span>
+                  <span class="save">Save 20%</span>
+                </div>
+
+                <button class="ctaBtn" data-route="source">Buy now</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- COACHING (looks like screenshot 2, but with ALL transformations featured) -->
+      <section id="coaching" class="panel">
+        <div class="detail">
+          <div class="left">
+            <div class="transGrid">
+              <div class="featured">
+                <div class="badge">Client 1 (Featured)</div>
+                <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75"
+                     alt="Client 1 transformation" loading="eager" />
+              </div>
+
+              <div class="stack">
+                <div class="tile">
+                  <div class="badge">Client 2</div>
+                  <img src="https://i.imgur.com/MGDA08V.png" alt="Client 2 transformation" loading="lazy" />
+                </div>
+                <div class="tile">
+                  <div class="badge">Client 3</div>
+                  <img src="https://i.imgur.com/hlKYBvf.png" alt="Client 3 transformation" loading="lazy" />
                 </div>
               </div>
-              <div class="card-cta">
-                <button class="btn" type="button" onclick="event.stopPropagation(); go('#sources')">Buy now</button>
-              </div>
+            </div>
+
+            <div class="metaRow">
+              <span class="mini">$79 / month</span>
+              <span class="mini">By Will</span>
+            </div>
+
+            <div class="h1">1 On 1 Coaching | Customized Protocols | In-Depth Explanations | 24/7 DM Access</div>
+
+            <ul class="bullets">
+              <li>FULL Customized Pharmacology Protocols (Physique, Height, Facial Aesthetics, Etc)</li>
+              <li>Bloodwork Help + Review</li>
+              <li>Proper Supplementation + Ancillary Use</li>
+              <li>Harm Mitigation</li>
+              <li>24/7 DM Access To Ask Me Anything</li>
+              <li>Unlimited Texts/Questions</li>
+              <li>Personalized Training/Diet Plan (Although I mainly specialize in the pharmacology side of things.)</li>
+              <li>All Sources</li>
+              <li>Literally anything else you can think of....</li>
+            </ul>
+
+            <div class="legal">
+              This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information, and you agree to hold the provider harmless from any related claims.
             </div>
           </div>
+
+          <aside class="buy" aria-label="Purchase box">
+            <div class="buyTitle">Coaching - 1 Month</div>
+            <div class="buyPrice">
+              <span class="strike">$98.75</span>
+              <span style="color:var(--text)">$79 / month</span>
+              <span class="save">Save 20%</span>
+            </div>
+            <!-- Replace with your real checkout link -->
+            <a class="buyBtn primary" href="YOUR_COACHING_CHECKOUT_LINK" target="_blank" rel="noopener" style="display:grid;place-items:center;text-decoration:none">
+              Join now
+            </a>
+            <div class="divider"></div>
+            <button class="buyBtn" data-route="source">View Source List</button>
+            <div class="divider"></div>
+            <button class="buyBtn" data-route="home">Back to Home</button>
+          </aside>
         </div>
-      </main>
-    </section>
+      </section>
 
-    <!-- COACHING DETAIL -->
-    <section id="coaching" class="section">
-      <header class="topbar" style="padding-bottom:10px;">
-        <div class="backlink" onclick="go('#home')" role="button" tabindex="0" onkeypress="if(event.key==='Enter'){go('#home')}">
-          <span style="font-size:18px; opacity:.8;">‹</span>
-          <div class="badge-icon" style="width:22px;height:22px;border-radius:7px;"><span style="font-size:11px;">EC</span></div>
-          <span class="brand" style="font-size:14px; font-weight:700;">EnhancementsExplained Coaching</span>
+      <!-- SOURCE (like screenshot 3) -->
+      <section id="source" class="panel">
+        <div class="detail">
+          <div class="left">
+            <div class="heroImg">
+              <img src="https://i.imgur.com/8ar7sag.png" alt="Source List hero image" loading="eager" />
+            </div>
+
+            <div class="metaRow">
+              <span class="mini">$19</span>
+              <span class="mini">By Will</span>
+            </div>
+
+            <div class="h1">Oils | Peps | HGH | Ancillaries | Infigratinib + Vosoritide | Nootropics | +MORE</div>
+
+            <div class="legal" style="margin-top:12px">
+              This content is provided strictly for informational and educational purposes only.
+              I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available, research data, historical information, or third-party listings that are not owned, operated, or controlled by me.
+              All compounds and materials referenced may be subject to local, state, federal, or international laws and regulations. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance.
+              Nothing contained here should be interpreted as medical advice, dosing guidance, usage instruction, or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes where legally permitted.
+              By accessing this content, you acknowledge that you are solely responsible for your own actions, decisions, and legal compliance. I assume no liability for misuse, illegal use, third-party transactions, or damages resulting from the use or interpretation of this information.
+              If you do not agree with these terms, do not access or use this content.
+            </div>
+          </div>
+
+          <aside class="buy" aria-label="Purchase box">
+            <div class="buyTitle">Source List</div>
+            <div class="buyPrice">
+              <span class="strike">$23.75</span>
+              <span style="color:var(--text)">$19</span>
+              <span class="save">Save 20%</span>
+            </div>
+            <!-- Replace with your real checkout link -->
+            <a class="buyBtn primary" href="YOUR_SOURCE_LIST_CHECKOUT_LINK" target="_blank" rel="noopener" style="display:grid;place-items:center;text-decoration:none">
+              Buy now
+            </a>
+            <div class="divider"></div>
+            <button class="buyBtn" data-route="coaching">View Coaching</button>
+            <div class="divider"></div>
+            <button class="buyBtn" data-route="home">Back to Home</button>
+          </aside>
         </div>
-      </header>
+      </section>
 
-      <div class="detail-grid page">
-        <main>
-          <div class="hero">
-            <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75" alt="Coaching transformation hero" />
-          </div>
+    </div>
+  </main>
 
-          <div class="meta-bar">
-            <div class="meta-chip"><span class="meta-dot"></span> $79 / month</div>
-            <div class="meta-chip"><span class="meta-dot"></span> By Will</div>
-          </div>
-
-          <h1 class="h1">1 On 1 Coaching | Customized Protocols | In-Depth Explanations | 24/7 DM Access</h1>
-
-          <ul class="bullets">
-            <li>FULL Customized Pharmacology Protocols (Physique, Height, Facial Aesthetics, Etc)</li>
-            <li>Bloodwork Help + Review</li>
-            <li>Proper Supplementation + Ancillary Use</li>
-            <li>Harm Mitigation</li>
-            <li>24/7 DM Access To Ask Me Anything</li>
-            <li>Unlimited Texts/Questions</li>
-            <li>Personalized Training/Diet Plan (Although I mainly specialize in the pharmacology side of things.)</li>
-            <li>All Sources</li>
-            <li>Literally anything else you can think of....</li>
-          </ul>
-
-          <div class="smallprint">
-This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information, and you agree to hold the provider harmless from any related claims.
-          </div>
-        </main>
-
-        <aside class="sidebar">
-          <div class="sidecard">
-            <div class="side-media">
-              <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F7bd7028c-e97a-449b-a535-cdb012537a5d.png@avif?w=3840&q=75" alt="Before and after physique" />
-            </div>
-            <div class="side-body">
-              <div class="side-title">Coaching - 1 Month</div>
-              <div class="side-price">
-                <span class="strike">$98.75</span>
-                <span class="price-strong">$79 / month</span>
-                <span class="pill">Save 20%</span>
-              </div>
-            </div>
-            <div class="side-cta">
-              <button class="btn-secondary" type="button" title="Connect your payment link later">Join now</button>
-            </div>
-          </div>
-
-          <div class="faq" data-faq>
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>How much will the protocol you design me cost per month?</span>
-                <span class="plus">+</span>
-              </button>
-              <div class="faq-a">It depends on your goals. Different goals, different compound selections, different costs. If you tell me your budget, I can do my best to work within that range</div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>How many inches will I grow?</span>
-                <span class="plus">+</span>
-              </button>
-              <div class="faq-a">I cannot predict this, nobody can. Obviously you will only be able to get taller if your growth plates are open, which you will NEED an X-Ray to confirm. I can say I've gotten clients 1.5-2.5 inches of height growth at ages 15-18 over a couple months.</div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>How old do I have to be for coaching?</span>
-                <span class="plus">+</span>
-              </button>
-              <div class="faq-a">I only accept 13+ year old clients.
-</div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>Is bloodwork required?</span>
-                <span class="plus">+</span>
-              </button>
-              <div class="faq-a">Not required, but definitely optimal.
-</div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-q" type="button">
-                <span>How long will responses take?</span>
-                <span class="plus">+</span>
-              </button>
-              <div class="faq-a">I usually respond within a couple of hours to answer absolutely any questions/concerns my clients have. Responses will never take over 24hrs.</div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    
-      <div class="mobile-buybar" aria-label="Coaching - 1 Month quick purchase bar">
-        <div class="mb-left">
-          <div class="mb-title">Coaching - 1 Month</div>
-          <div class="mb-price">$79 / month</div>
-        </div>
-        <button class="mb-btn" type="button" title="Connect your payment link later">Join now</button>
-      </div>
-</section>
-
-    <!-- SOURCES DETAIL -->
-    <section id="sources" class="section">
-      <header class="topbar" style="padding-bottom:10px;">
-        <div class="backlink" onclick="go('#home')" role="button" tabindex="0" onkeypress="if(event.key==='Enter'){go('#home')}">
-          <span style="font-size:18px; opacity:.8;">‹</span>
-          <div class="badge-icon" style="width:22px;height:22px;border-radius:7px;"><span style="font-size:11px;">EC</span></div>
-          <span class="brand" style="font-size:14px; font-weight:700;">EnhancementsExplained Coaching</span>
-        </div>
-      </header>
-
-      <div class="detail-grid page">
-        <main>
-          <div class="hero">
-            <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F281d8966-5a1b-4781-b2cd-8d609e1a74ac.png@avif?w=3840&q=75" alt="Source list hero" />
-          </div>
-
-          <div class="meta-bar">
-            <div class="meta-chip"><span class="meta-dot"></span> $19</div>
-            <div class="meta-chip"><span class="meta-dot"></span> 1 members</div>
-            <div class="meta-chip"><span class="meta-dot"></span> By Will</div>
-          </div>
-
-          <h1 class="h1">Oils | Peps | HGH | Ancillaries | Infigratinib + Vosoritide | Nootropics | +MORE</h1>
-
-          <div class="smallprint">
-This content is provided strictly for informational and educational purposes only.
-I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available, research data, historical information, or third-party listings that are not owned, operated, or controlled by me.
-All compounds and materials referenced may be subject to local, state, federal, or international laws and regulations. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance.
-Nothing contained here should be interpreted as medical advice, dosing guidance, usage instruction, or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes where legally permitted.
-By accessing this content, you acknowledge that you are solely responsible for your own actions, decisions, and legal compliance. I assume no liability for misuse, illegal use, third-party transactions, or damages resulting from the use or interpretation of this information.
-If you do not agree with these terms, do not access or use this content.
-          </div>
-        </main>
-
-        <aside class="sidebar">
-          <div class="sidecard">
-            <div class="side-media">
-              <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F281d8966-5a1b-4781-b2cd-8d609e1a74ac.png@avif?w=3840&q=75" alt="Before and after physique" />
-            </div>
-            <div class="side-body">
-              <div class="side-title">Source List</div>
-              <div class="side-price">
-                <span class="strike">$23.75</span>
-                <span class="price-strong">$19</span>
-                <span class="pill">Save 20%</span>
-              </div>
-            </div>
-            <div class="side-cta">
-              <button class="btn-secondary" type="button" title="Connect your payment link later">Buy now</button>
-            </div>
-          </div>
-        </aside>
-      </div>
-    
-      <div class="mobile-buybar" aria-label="Source List quick purchase bar">
-        <div class="mb-left">
-          <div class="mb-title">Source List</div>
-          <div class="mb-price">$19</div>
-        </div>
-        <button class="mb-btn" type="button" title="Connect your payment link later">Buy now</button>
-      </div>
-</section>
-  </div>
+  <footer>
+    <div class="wrap">
+      © <span id="year"></span> EnhancementsExplained. Replace <b>YOUR_COACHING_CHECKOUT_LINK</b> and <b>YOUR_SOURCE_LIST_CHECKOUT_LINK</b> in the HTML.
+    </div>
+  </footer>
 
   <script>
-    function showSection(hash){
-      const id = (hash || "#home").replace("#","");
-      document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-      const el = document.getElementById(id) || document.getElementById("home");
-      el.classList.add("active");
-      window.scrollTo({top:0, behavior:"instant"});
-      // set focus for accessibility
-      const focusTarget = el.querySelector(".backlink") || el.querySelector(".logo") || el;
-      focusTarget && focusTarget.focus && focusTarget.focus({preventScroll:true});
-    }
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    function go(hash){
-      history.pushState(null, "", hash);
-      showSection(hash);
-    }
+    const panels = ["home","coaching","source"];
+    const navBtns = Array.from(document.querySelectorAll(".nav button"));
+    const routeBtns = Array.from(document.querySelectorAll("[data-route]"));
 
-    // FAQ accordion
-    function initFAQ(){
-      document.querySelectorAll("[data-faq]").forEach((wrap) => {
-        wrap.querySelectorAll(".faq-q").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const item = btn.closest(".faq-item");
-            const isOpen = item.classList.contains("open");
-            wrap.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
-            if (!isOpen) item.classList.add("open");
-          });
-        });
+    function setRoute(r){
+      panels.forEach(id=>{
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle("active", id === r);
       });
+      navBtns.forEach(b=>{
+        b.classList.toggle("active", b.dataset.route === r);
+      });
+      window.scrollTo({top:0, behavior:"smooth"});
     }
 
-    window.addEventListener("hashchange", () => showSection(location.hash));
-    window.addEventListener("popstate", () => showSection(location.hash));
-    document.addEventListener("DOMContentLoaded", () => {
-      initFAQ();
-      showSection(location.hash || "#home");
+    routeBtns.forEach(el=>{
+      el.addEventListener("click", (e)=>{
+        const r = el.dataset.route;
+        if (!r) return;
+        // If it's a button/span, route. If it's an anchor with href, let it work unless it's data-route.
+        e.preventDefault();
+        setRoute(r);
+        history.replaceState(null, "", "#" + r);
+      });
     });
+
+    // initial route via hash
+    const init = (location.hash || "#home").replace("#","");
+    setRoute(panels.includes(init) ? init : "home");
   </script>
 </body>
 </html>
