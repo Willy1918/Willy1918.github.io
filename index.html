@@ -8,15 +8,11 @@
   <style>
     :root{
       --bg:#06080c;
-      --panel:#0b0f17;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.085);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.70);
       --faint: rgba(255,255,255,.55);
       --line: rgba(255,255,255,.11);
       --blue: #2b66ff;
-      --radius: 18px;
       --radius2: 26px;
       --shadow: 0 24px 80px rgba(0,0,0,.55);
       --max: 1140px;
@@ -31,14 +27,28 @@
       color: var(--text);
       background:
         radial-gradient(1100px 680px at 20% 10%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(900px 620px at 80% 25%, rgba(45,102,255,.12), transparent 60%),
-        radial-gradient(1000px 900px at 50% 100%, rgba(255,255,255,.05), transparent 60%),
+        radial-gradient(900px 620px at 80% 25%, rgba(45,102,255,.10), transparent 60%),
         var(--bg);
     }
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
+
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
     .wrap.narrow{max-width:var(--maxNarrow)}
+
+    /* --- CSS-only routing (no JS, works everywhere) --- */
+    .tabs{position:absolute; left:-9999px; top:-9999px; opacity:0}
+    #tab-home:checked ~ main #home,
+    #tab-coaching:checked ~ main #coaching,
+    #tab-source:checked ~ main #source{display:block}
+    #tab-home:checked ~ main #coaching,
+    #tab-home:checked ~ main #source,
+    #tab-coaching:checked ~ main #home,
+    #tab-coaching:checked ~ main #source,
+    #tab-source:checked ~ main #home,
+    #tab-source:checked ~ main #coaching{display:none}
+
+    /* Top bar */
     .top{
       position:sticky; top:0; z-index:50;
       background: rgba(6,8,12,.72);
@@ -62,12 +72,9 @@
       border:1px solid rgba(255,255,255,.12);
       box-shadow: 0 14px 40px rgba(43,102,255,.20);
     }
-    .nav{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .nav a, .nav button{
-      border:0;
-      background: transparent;
+
+    .nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .nav label{
       color: var(--muted);
       font-weight:800;
       font-size:14px;
@@ -75,22 +82,22 @@
       border-radius: 999px;
       cursor:pointer;
       transition:.15s ease;
+      user-select:none;
+      border:1px solid transparent;
     }
-    .nav a:hover, .nav button:hover{
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-    }
-    .nav .active{
+    .nav label:hover{background: rgba(255,255,255,.06); color: var(--text)}
+    #tab-home:checked ~ header .nav label[for="tab-home"],
+    #tab-coaching:checked ~ header .nav label[for="tab-coaching"],
+    #tab-source:checked ~ header .nav label[for="tab-source"]{
       background: rgba(255,255,255,.08);
       color: var(--text);
-      border: 1px solid rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.10);
     }
 
     main{padding: 26px 0 44px}
     .panel{display:none}
-    .panel.active{display:block}
 
-    /* Homepage product cards (like screenshot 1) */
+    /* Homepage cards (like screenshot 1) */
     .cards2{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -107,7 +114,6 @@
     .product .img{
       height: 240px;
       background: rgba(0,0,0,.22);
-      display:flex; align-items:center; justify-content:center;
       overflow:hidden;
     }
     .product .img img{
@@ -177,16 +183,13 @@
     .ctaBtn:hover{filter:brightness(1.06); transform: translateY(-1px)}
     .ctaBtn:active{transform: translateY(0px)}
 
-    /* Product detail layout (like screenshot 2/3) */
+    /* Detail layout (like screenshot 2/3) */
     .detail{
       display:grid;
       grid-template-columns: 1.45fr .55fr;
       gap:18px;
       align-items:start;
       margin-top: 12px;
-    }
-    .left{
-      min-width:0;
     }
     .heroImg{
       border-radius: var(--radius2);
@@ -202,14 +205,15 @@
       object-position: center;
     }
 
-    /* Coaching page: transformations featured */
+    /* Coaching transformations */
     .transGrid{
       margin-top: 14px;
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap:14px;
+      align-items: start;
     }
-    .featured{
+    .featured, .tile{
       border-radius: var(--radius2);
       overflow:hidden;
       border: 1px solid rgba(255,255,255,.10);
@@ -219,9 +223,19 @@
     }
     .featured img{
       width:100%;
-      height: 520px;
-      object-fit: contain; /* show full before/after */
+      height:auto;
+      max-height: 520px;
+      object-fit: contain;
       background: rgba(0,0,0,.30);
+      display:block;
+    }
+    .tile img{
+      width:100%;
+      height:auto;
+      max-height: 260px;
+      object-fit: contain;
+      background: rgba(0,0,0,.30);
+      display:block;
     }
     .badge{
       position:absolute; left:14px; top:14px;
@@ -233,30 +247,13 @@
       font-weight: 950;
       font-size: 13px;
     }
-    .stack{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-    .stack .tile{
-      border-radius: var(--radius2);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      box-shadow: var(--shadow);
-      position:relative;
-    }
-    .stack .tile img{
-      width:100%;
-      height: 252px;
-      object-fit: contain;
-      background: rgba(0,0,0,.30);
-    }
+    .stack{display:grid; grid-template-columns:1fr; gap:14px}
 
-    .metaRow{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 12px;
-    }
+    /* Prevent the left featured card from stretching to match the right column height */
+    .featured{align-self:start}
+    .stack{align-self:start}
+
+    .metaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
     .h1{
       margin:14px 0 8px;
       font-size: clamp(22px, 2.4vw, 30px);
@@ -272,13 +269,7 @@
       line-height:1.55;
     }
     .bullets li{margin:6px 0}
-
-    .legal{
-      margin-top: 14px;
-      color: var(--faint);
-      font-size: 12px;
-      line-height:1.55;
-    }
+    .legal{margin-top: 14px; color: var(--faint); font-size: 12px; line-height:1.55}
 
     /* Purchase box */
     .buy{
@@ -290,11 +281,7 @@
       position: sticky;
       top: 78px;
     }
-    .buyTitle{
-      font-weight: 950;
-      letter-spacing:-.2px;
-      margin:0 0 8px;
-    }
+    .buyTitle{font-weight: 950; letter-spacing:-.2px; margin:0 0 8px}
     .buyPrice{
       display:flex; align-items:center; gap:10px; flex-wrap:wrap;
       color: var(--muted);
@@ -312,39 +299,41 @@
       font-weight: 950;
       cursor:pointer;
       transition:.15s ease;
+      display:grid;
+      place-items:center;
+      text-decoration:none;
     }
-    .buyBtn.primary{
-      background: var(--blue);
-      border: 0;
-      color: white;
-    }
+    .buyBtn.primary{background: var(--blue); border:0; color:white}
     .buyBtn:hover{filter:brightness(1.05); transform: translateY(-1px)}
     .buyBtn:active{transform: translateY(0px)}
     .divider{height:1px; background: rgba(255,255,255,.10); margin:14px 0}
 
-    /* Footer */
     footer{
-      border-top: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
-      padding: 18px 0 26px;
-      color: var(--faint);
-      font-size: 12px;
+      border-top: 0;
+      background: transparent;
+      padding: 0;
+      height: 0;
+      overflow: hidden;
     }
 
-    /* Mobile */
     @media (max-width: 980px){
       .cards2{grid-template-columns:1fr}
       .detail{grid-template-columns:1fr}
       .buy{position:relative; top:auto}
       .heroImg img{height: 320px}
       .transGrid{grid-template-columns:1fr}
-      .featured img{height: 460px}
-      .stack .tile img{height: 260px}
+      .featured img{max-height: 460px}
+      .tile img{max-height: 260px}
     }
   </style>
 </head>
 
 <body>
+  <!-- Hidden radios control which page is visible -->
+  <input class="tabs" type="radio" name="tab" id="tab-home" checked>
+  <input class="tabs" type="radio" name="tab" id="tab-coaching">
+  <input class="tabs" type="radio" name="tab" id="tab-source">
+
   <header class="top">
     <div class="wrap">
       <div class="toprow">
@@ -352,10 +341,10 @@
           <div class="icon">EC</div>
           <div>EnhancementsExplained Coaching</div>
         </div>
-        <div class="nav">
-          <button class="active" data-route="home">Home</button>
-          <button data-route="coaching">Coaching</button>
-          <button data-route="source">Source List</button>
+        <div class="nav" role="navigation" aria-label="Primary">
+          <label for="tab-home">Home</label>
+          <label for="tab-coaching">Coaching</label>
+          <label for="tab-source">Source List</label>
         </div>
       </div>
     </div>
@@ -365,7 +354,7 @@
     <div class="wrap">
 
       <!-- HOME -->
-      <section id="home" class="panel active">
+      <section id="home" class="panel">
         <div class="wrap narrow">
           <div class="cards2">
 
@@ -389,7 +378,7 @@
                   <span class="save">Save 20%</span>
                 </div>
 
-                <button class="ctaBtn" data-route="coaching">Join now</button>
+                <label class="ctaBtn" for="tab-coaching">Join now</label>
               </div>
             </div>
 
@@ -412,7 +401,7 @@
                   <span class="save">Save 20%</span>
                 </div>
 
-                <button class="ctaBtn" data-route="source">Buy now</button>
+                <label class="ctaBtn" for="tab-source">Buy now</label>
               </div>
             </div>
 
@@ -420,10 +409,10 @@
         </div>
       </section>
 
-      <!-- COACHING (looks like screenshot 2, but with ALL transformations featured) -->
+      <!-- COACHING -->
       <section id="coaching" class="panel">
         <div class="detail">
-          <div class="left">
+          <div>
             <div class="transGrid">
               <div class="featured">
                 <div class="badge">Client 1 (Featured)</div>
@@ -474,22 +463,20 @@
               <span style="color:var(--text)">$79 / month</span>
               <span class="save">Save 20%</span>
             </div>
-            <!-- Replace with your real checkout link -->
-            <a class="buyBtn primary" href="YOUR_COACHING_CHECKOUT_LINK" target="_blank" rel="noopener" style="display:grid;place-items:center;text-decoration:none">
-              Join now
-            </a>
+
+            <a class="buyBtn primary" href="YOUR_COACHING_CHECKOUT_LINK" target="_blank" rel="noopener">Join now</a>
             <div class="divider"></div>
-            <button class="buyBtn" data-route="source">View Source List</button>
+            <label class="buyBtn" for="tab-source">View Source List</label>
             <div class="divider"></div>
-            <button class="buyBtn" data-route="home">Back to Home</button>
+            <label class="buyBtn" for="tab-home">Back to Home</label>
           </aside>
         </div>
       </section>
 
-      <!-- SOURCE (like screenshot 3) -->
+      <!-- SOURCE LIST -->
       <section id="source" class="panel">
         <div class="detail">
-          <div class="left">
+          <div>
             <div class="heroImg">
               <img src="https://i.imgur.com/8ar7sag.png" alt="Source List hero image" loading="eager" />
             </div>
@@ -518,14 +505,12 @@
               <span style="color:var(--text)">$19</span>
               <span class="save">Save 20%</span>
             </div>
-            <!-- Replace with your real checkout link -->
-            <a class="buyBtn primary" href="YOUR_SOURCE_LIST_CHECKOUT_LINK" target="_blank" rel="noopener" style="display:grid;place-items:center;text-decoration:none">
-              Buy now
-            </a>
+
+            <a class="buyBtn primary" href="YOUR_SOURCE_LIST_CHECKOUT_LINK" target="_blank" rel="noopener">Buy now</a>
             <div class="divider"></div>
-            <button class="buyBtn" data-route="coaching">View Coaching</button>
+            <label class="buyBtn" for="tab-coaching">View Coaching</label>
             <div class="divider"></div>
-            <button class="buyBtn" data-route="home">Back to Home</button>
+            <label class="buyBtn" for="tab-home">Back to Home</label>
           </aside>
         </div>
       </section>
@@ -533,44 +518,8 @@
     </div>
   </main>
 
-  <footer>
-    <div class="wrap">
-      © <span id="year"></span> EnhancementsExplained. Replace <b>YOUR_COACHING_CHECKOUT_LINK</b> and <b>YOUR_SOURCE_LIST_CHECKOUT_LINK</b> in the HTML.
-    </div>
+  <footer aria-hidden="true">
+    <div class="wrap"></div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const panels = ["home","coaching","source"];
-    const navBtns = Array.from(document.querySelectorAll(".nav button"));
-    const routeBtns = Array.from(document.querySelectorAll("[data-route]"));
-
-    function setRoute(r){
-      panels.forEach(id=>{
-        const el = document.getElementById(id);
-        if (el) el.classList.toggle("active", id === r);
-      });
-      navBtns.forEach(b=>{
-        b.classList.toggle("active", b.dataset.route === r);
-      });
-      window.scrollTo({top:0, behavior:"smooth"});
-    }
-
-    routeBtns.forEach(el=>{
-      el.addEventListener("click", (e)=>{
-        const r = el.dataset.route;
-        if (!r) return;
-        // If it's a button/span, route. If it's an anchor with href, let it work unless it's data-route.
-        e.preventDefault();
-        setRoute(r);
-        history.replaceState(null, "", "#" + r);
-      });
-    });
-
-    // initial route via hash
-    const init = (location.hash || "#home").replace("#","");
-    setRoute(panels.includes(init) ? init : "home");
-  </script>
 </body>
 </html>
