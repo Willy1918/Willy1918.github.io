@@ -269,7 +269,8 @@
       line-height:1.55;
     }
     .bullets li{margin:6px 0}
-    .legal{margin-top: 14px; color: var(--faint); font-size: 12px; line-height:1.55}
+    .legal{margin-top: 14px; color: rgba(255,255,255,.42); font-size: 10.5px; line-height:1.55}
+    .legalBottom{margin-top: 14px; padding-bottom: 8px}
 
     /* Purchase box */
     .buy{
@@ -317,6 +318,12 @@
     }
 
     @media (max-width: 980px){
+      .toprow{padding:8px 0}
+      .brand{gap:8px}
+      .brand div:last-child{font-size:14px; line-height:1.1}
+      .icon{width:24px;height:24px;border-radius:9px;font-size:12px}
+      .nav label{padding:8px 10px; font-size:13px}
+
       .cards2{grid-template-columns:1fr}
       .detail{grid-template-columns:1fr}
       .buy{position:relative; top:auto}
@@ -450,11 +457,7 @@
               <li>All Sources</li>
               <li>Literally anything else you can think of....</li>
             </ul>
-
-            <div class="legal">
-              This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information, and you agree to hold the provider harmless from any related claims.
-            </div>
-          </div>
+</div>
 
           <aside class="buy" aria-label="Purchase box">
             <div class="buyTitle">Coaching - 1 Month</div>
@@ -471,6 +474,12 @@
             <label class="buyBtn" for="tab-home">Back to Home</label>
           </aside>
         </div>
+
+
+        <div class="legal legalBottom">
+          This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information, and you agree to hold the provider harmless from any related claims.
+        </div>
+
       </section>
 
       <!-- SOURCE LIST -->
@@ -487,16 +496,7 @@
             </div>
 
             <div class="h1">Oils | Peps | HGH | Ancillaries | Infigratinib + Vosoritide | Nootropics | +MORE</div>
-
-            <div class="legal" style="margin-top:12px">
-              This content is provided strictly for informational and educational purposes only.
-              I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available, research data, historical information, or third-party listings that are not owned, operated, or controlled by me.
-              All compounds and materials referenced may be subject to local, state, federal, or international laws and regulations. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance.
-              Nothing contained here should be interpreted as medical advice, dosing guidance, usage instruction, or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes where legally permitted.
-              By accessing this content, you acknowledge that you are solely responsible for your own actions, decisions, and legal compliance. I assume no liability for misuse, illegal use, third-party transactions, or damages resulting from the use or interpretation of this information.
-              If you do not agree with these terms, do not access or use this content.
-            </div>
-          </div>
+</div>
 
           <aside class="buy" aria-label="Purchase box">
             <div class="buyTitle">Source List</div>
@@ -513,6 +513,17 @@
             <label class="buyBtn" for="tab-home">Back to Home</label>
           </aside>
         </div>
+
+
+        <div class="legal legalBottom">
+          This content is provided strictly for informational and educational purposes only.
+              I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available, research data, historical information, or third-party listings that are not owned, operated, or controlled by me.
+              All compounds and materials referenced may be subject to local, state, federal, or international laws and regulations. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance.
+              Nothing contained here should be interpreted as medical advice, dosing guidance, usage instruction, or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes where legally permitted.
+              By accessing this content, you acknowledge that you are solely responsible for your own actions, decisions, and legal compliance. I assume no liability for misuse, illegal use, third-party transactions, or damages resulting from the use or interpretation of this information.
+              If you do not agree with these terms, do not access or use this content.
+        </div>
+
       </section>
 
     </div>
