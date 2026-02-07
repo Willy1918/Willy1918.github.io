@@ -21,7 +21,7 @@
       /* Layout */
       --radius: 20px;
       --radius-sm: 12px;
-      --max: 1000px; /* Tighter container for better readability */
+      --max: 1000px; 
       --header-h: 70px;
     }
 
@@ -32,7 +32,6 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
       background-color: var(--bg);
-      /* Subtle, deep background mesh */
       background-image: 
         radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
@@ -44,7 +43,6 @@
     a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
     img { display: block; width: 100%; height: auto; object-fit: cover; }
 
-    /* --- LAYOUT UTILS --- */
     .wrap {
       width: 100%;
       max-width: var(--max);
@@ -52,18 +50,18 @@
       padding: 0 20px;
     }
 
-    /* --- ROUTING (CSS Only) --- */
-    .tabs { display: none; } /* Hide radios */
+    /* --- ROUTING --- */
+    .tabs { display: none; } 
     
-    /* Logic: Show specific ID based on checked radio */
     #tab-home:checked ~ main #home,
     #tab-coaching:checked ~ main #coaching,
+    #tab-protocol:checked ~ main #protocol,
     #tab-source:checked ~ main #source {
       display: block;
       animation: fadeIn 0.4s ease;
     }
     
-    .panel { display: none; } /* Default hidden */
+    .panel { display: none; } 
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -133,17 +131,15 @@
 
     .nav label:hover { color: var(--text); }
 
-    /* Active Nav State */
     #tab-home:checked ~ .top label[for="tab-home"],
     #tab-coaching:checked ~ .top label[for="tab-coaching"],
+    #tab-protocol:checked ~ .top label[for="tab-protocol"],
     #tab-source:checked ~ .top label[for="tab-source"] {
       background: var(--border);
       color: white;
     }
 
     /* --- COMPONENTS --- */
-    
-    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -173,7 +169,6 @@
     }
     .btn-outline:hover { background: var(--highlight); }
 
-    /* Cards */
     .card {
       background: var(--bg-panel);
       border: 1px solid var(--border);
@@ -183,7 +178,6 @@
       flex-direction: column;
     }
 
-    /* --- HOME GRID --- */
     .home-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -235,16 +229,14 @@
       font-weight: 700; 
     }
 
-    /* --- DETAIL LAYOUT (Coaching/Source) --- */
     .detail-layout {
       display: grid;
-      grid-template-columns: 1fr 340px; /* Sidebar fixed width on desktop */
+      grid-template-columns: 1fr 340px; 
       gap: 30px;
       margin-top: 30px;
       align-items: start;
     }
 
-    /* Left Content */
     .content-area { display: flex; flex-direction: column; gap: 20px; }
     
     .hero {
@@ -253,7 +245,6 @@
       border: 1px solid var(--border);
     }
     
-    /* Coaching Gallery Grid */
     .gallery-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -305,10 +296,9 @@
       font-weight: bold;
     }
 
-    /* Sidebar (Buy Box) */
     .sidebar {
       position: sticky;
-      top: 90px; /* Below header */
+      top: 90px; 
       background: var(--bg-panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -319,9 +309,8 @@
     .sidebar-title { font-weight: 800; font-size: 18px; margin: 0 0 10px 0; }
     .divider { height: 1px; background: var(--border); margin: 15px 0; }
 
-    /* --- LEGAL TEXT (Smaller) --- */
     .legal-text {
-      font-size: 10px; /* User requested smaller */
+      font-size: 10px; 
       line-height: 1.5;
       color: var(--faint);
       margin-top: 30px;
@@ -330,31 +319,14 @@
       text-align: justify;
     }
 
-    /* --- MOBILE RESPONSIVENESS --- */
     @media (max-width: 768px) {
       .top { padding: 10px 0; }
       .nav-container { flex-direction: column; gap: 12px; }
       .nav { width: 100%; justify-content: center; }
       .nav label { flex: 1; text-align: center; padding: 10px; font-size: 12px; }
-
-      .detail-layout {
-        grid-template-columns: 1fr; /* Stack sidebar below content */
-        gap: 20px;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr; /* Stack images vertically */
-      }
-      .gallery-item img {
-        max-height: 400px; /* Cap height so they don't take full screen */
-      }
-
-      .sidebar {
-        position: relative; /* No longer sticky on mobile */
-        top: 0;
-        order: 1; /* Move to bottom if desired, or keep logic simple */
-      }
-      
+      .detail-layout { grid-template-columns: 1fr; gap: 20px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: 0; order: 1; }
       .detail-title { font-size: 22px; }
     }
   </style>
@@ -364,6 +336,7 @@
 
   <input class="tabs" type="radio" name="tab" id="tab-home" checked>
   <input class="tabs" type="radio" name="tab" id="tab-coaching">
+  <input class="tabs" type="radio" name="tab" id="tab-protocol">
   <input class="tabs" type="radio" name="tab" id="tab-source">
 
   <header class="top">
@@ -376,6 +349,7 @@
         <nav class="nav">
           <label for="tab-home">Home</label>
           <label for="tab-coaching">Coaching</label>
+          <label for="tab-protocol">Protocols</label>
           <label for="tab-source">Sources</label>
         </nav>
       </div>
@@ -395,14 +369,29 @@
             <div class="tag">Most Popular</div>
             <h2 class="h2">1-on-1 Coaching</h2>
             <p class="p">Custom protocols, in-depth explanations, and 24/7 DM access to guide your transformation safely.</p>
-            
             <div class="price-row">
               <span class="strike">$98.75</span>
               <span class="current">$79 / mo</span>
               <span class="badge">-20%</span>
             </div>
-            
             <label class="btn btn-primary" for="tab-coaching">View Details</label>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="product-img">
+            <img src="https://i.imgur.com/A3o2gIm.png" alt="Protocol Design" loading="lazy" />
+          </div>
+          <div class="product-body">
+            <div class="tag">One-Time Setup</div>
+            <h2 class="h2">Personalized Protocol Design</h2>
+            <p class="p">Receive a one-time, deep-dive pharmaceutical blueprint tailored to your specific genetic goals.</p>
+            <div class="price-row">
+              <span class="strike">$48.75</span>
+              <span class="current">$39</span>
+              <span class="badge">-20%</span>
+            </div>
+            <label class="btn btn-primary" for="tab-protocol">View Details</label>
           </div>
         </article>
 
@@ -414,13 +403,11 @@
             <div class="tag">Instant Access</div>
             <h2 class="h2">Source List</h2>
             <p class="p">Curated list of sources for oils, peps, HGH, ancillaries, nootropics, and more hard-to-find items.</p>
-            
             <div class="price-row">
               <span class="strike">$23.75</span>
               <span class="current">$19</span>
               <span class="badge">-20%</span>
             </div>
-            
             <label class="btn btn-primary" for="tab-source">View Details</label>
           </div>
         </article>
@@ -428,10 +415,8 @@
       </div>
     </section>
 
-
     <section id="coaching" class="panel">
       <div class="detail-layout">
-        
         <div class="content-area">
           <div class="gallery-grid">
             <div class="gallery-item">
@@ -447,11 +432,9 @@
               </div>
             </div>
           </div>
-
           <div>
             <div class="tag">By Will</div>
             <h1 class="detail-title">Complete Pharmacology & Transformation Coaching</h1>
-            
             <ul class="feature-list">
               <li>**FULL Customized Pharmacology Protocols** (Physique, Height, Facial Aesthetics)</li>
               <li>Bloodwork Analysis & Review</li>
@@ -463,7 +446,6 @@
             </ul>
           </div>
         </div>
-
         <aside class="sidebar">
           <h3 class="sidebar-title">Monthly Coaching</h3>
           <div class="price-row">
@@ -471,37 +453,60 @@
             <span class="current" style="font-size:18px">$79 / month</span>
             <span class="badge">SAVE 20%</span>
           </div>
-
           <a href="YOUR_COACHING_CHECKOUT_LINK" target="_blank" class="btn btn-primary">Join Now</a>
-          
           <div class="divider"></div>
-          
-          <label for="tab-source" class="btn btn-outline" style="margin-bottom:10px">View Source List</label>
           <label for="tab-home" class="btn btn-outline">Back Home</label>
         </aside>
-
-      </div>
-
-      <div class="legal-text">
-        <strong>Disclaimer:</strong> This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information.
       </div>
     </section>
 
+    <section id="protocol" class="panel">
+      <div class="detail-layout">
+        <div class="content-area">
+          <div class="hero">
+            <img src="https://i.imgur.com/A3o2gIm.png" alt="Protocol Design Banner" style="width:100%; aspect-ratio:21/9; object-fit:cover;">
+          </div>
+          <div>
+            <div class="tag">Pharmacology Focus</div>
+            <h1 class="detail-title">Personalized Protocol Design</h1>
+            <p style="color:var(--muted); line-height:1.6; margin-bottom: 20px;">
+              A one-time, deep-dive pharmacological strategy built specifically for your biology. Following a intake of your stats and goals, you will receive a private Google Doc via Telegram. Here are just some examples of some of the goals I can help with: 
+            </p>
+            <ul class="feature-list">
+              <li>Height Optimization (If Growth Plates are Open)</li>
+              <li>Physique & Preformance Development</li>
+              <li>Craniofacial Bone Growth Protocols</li>
+              <li>Cognitive & Nootropic Stacks</li>
+              <li>Proper Supplement & Ancillary Protocol To Minimize Risk</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="sidebar">
+          <h3 class="sidebar-title">Protocol Blueprint</h3>
+          <div class="price-row">
+            <span class="strike">$48.75</span>
+            <span class="current" style="font-size:18px">$39.00</span>
+            <span class="badge">ONE TIME</span>
+          </div>
+          <a href="YOUR_PROTOCOL_CHECKOUT_LINK" target="_blank" class="btn btn-primary">Get My Protocol</a>
+          <div class="divider"></div>
+          <label for="tab-home" class="btn btn-outline">Back Home</label>
+        </aside>
+      </div>
+      <div class="legal-text">
+        <strong>Legal Notice:</strong> This protocol is a purely theoretical blueprint designed for academic research and informational purposes only. These substances are not intended for human consumption, and I am not a medical professional. If you choose to ignore medical warnings and apply this information to yourself, you do so at your own risk. I am absolutely not responsible or liable for any health complications, injuries, or legal consequences that may result from your actions. Your purchase constitutes a full and final waiver of all liability against me. </div>
+    </section>
 
     <section id="source" class="panel">
       <div class="detail-layout">
-        
         <div class="content-area">
           <div class="hero">
             <img src="https://i.imgur.com/8ar7sag.png" alt="Source List Banner" style="width:100%; aspect-ratio:21/9; object-fit:cover;">
           </div>
-
           <div>
             <div class="tag">Verified Sources</div>
             <h1 class="detail-title">The Complete Source List</h1>
-            <p style="color:var(--muted); line-height:1.6;">
-              Stop guessing. Get access to the curated list of providers for research and enhancement purposes. Includes sources for:
-            </p>
+            <p style="color:var(--muted); line-height:1.6;">Curated list of providers for research and enhancement purposes.</p>
             <ul class="feature-list">
               <li>Oils & Injectables</li>
               <li>Peptides (Peps)</li>
@@ -512,7 +517,6 @@
             </ul>
           </div>
         </div>
-
         <aside class="sidebar">
           <h3 class="sidebar-title">Unlock Access</h3>
           <div class="price-row">
@@ -520,19 +524,10 @@
             <span class="current" style="font-size:18px">$19.00</span>
             <span class="badge">ONE TIME</span>
           </div>
-
           <a href="YOUR_SOURCE_LIST_CHECKOUT_LINK" target="_blank" class="btn btn-primary">Buy Now</a>
-          
           <div class="divider"></div>
-          
-          <label for="tab-coaching" class="btn btn-outline" style="margin-bottom:10px">View Coaching</label>
           <label for="tab-home" class="btn btn-outline">Back Home</label>
         </aside>
-
-      </div>
-
-      <div class="legal-text">
-        <strong>Legal Notice:</strong> This content is provided strictly for informational and educational purposes only. I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available research data or third-party listings not controlled by me. All compounds referenced may be subject to local, state, federal, or international laws. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance. Nothing contained here should be interpreted as medical advice or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes. By accessing this content, you acknowledge that you are solely responsible for your own actions.
       </div>
     </section>
 
