@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EnhancementsExplained — Coaching & Source List</title>
   <meta name="description" content="Coaching services and a curated source list." />
   <style>
@@ -13,7 +13,7 @@
       --faint: rgba(255,255,255,.55);
       --line: rgba(255,255,255,.11);
       --blue: #2b66ff;
-      --radius2: 22px;
+      --radius2: 26px;
       --shadow: 0 24px 80px rgba(0,0,0,.55);
       --max: 1140px;
       --maxNarrow: 980px;
@@ -29,8 +29,6 @@
         radial-gradient(1100px 680px at 20% 10%, rgba(255,255,255,.06), transparent 60%),
         radial-gradient(900px 620px at 80% 25%, rgba(45,102,255,.10), transparent 60%),
         var(--bg);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
@@ -55,7 +53,6 @@
       position:sticky; top:0; z-index:50;
       background: rgba(6,8,12,.72);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
     .toprow{
@@ -66,7 +63,6 @@
     .brand{
       display:flex; align-items:center; gap:10px;
       font-weight:850; letter-spacing:.2px;
-      font-size: 15px;
     }
     .icon{
       width:28px; height:28px; border-radius:10px;
@@ -75,21 +71,19 @@
       font-size:13px; font-weight:900;
       border:1px solid rgba(255,255,255,.12);
       box-shadow: 0 14px 40px rgba(43,102,255,.20);
-      flex-shrink: 0;
     }
 
-    .nav{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .nav label{
       color: var(--muted);
       font-weight:800;
       font-size:14px;
-      padding:10px 14px;
+      padding:10px 12px;
       border-radius: 999px;
       cursor:pointer;
       transition:.15s ease;
       user-select:none;
       border:1px solid transparent;
-      white-space: nowrap;
     }
     .nav label:hover{background: rgba(255,255,255,.06); color: var(--text)}
     #tab-home:checked ~ header .nav label[for="tab-home"],
@@ -100,10 +94,10 @@
       border-color: rgba(255,255,255,.10);
     }
 
-    main{padding: 22px 0 44px}
+    main{padding: 26px 0 44px}
     .panel{display:none}
 
-    /* Homepage cards */
+    /* Homepage cards (like screenshot 1) */
     .cards2{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -116,14 +110,11 @@
       border-radius: var(--radius2);
       overflow:hidden;
       box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
     }
     .product .img{
       height: 240px;
       background: rgba(0,0,0,.22);
       overflow:hidden;
-      flex-shrink: 0;
     }
     .product .img img{
       width:100%; height:100%;
@@ -131,10 +122,10 @@
       object-position: center;
       filter: saturate(1.05) contrast(1.02);
     }
-    .product .body{padding:16px; flex: 1; display: flex; flex-direction: column;}
+    .product .body{padding:14px 16px 16px}
     .rowline{
       display:flex; align-items:center; gap:10px;
-      margin-top:0; flex-wrap:wrap;
+      margin-top:10px; flex-wrap:wrap;
       color: var(--muted);
       font-weight:800;
       font-size:13px;
@@ -147,24 +138,23 @@
       background: rgba(0,0,0,.18);
     }
     .title{
-      margin:12px 0 8px;
-      font-size: 17px;
+      margin:10px 0 6px;
+      font-size: 16px;
       font-weight: 900;
       letter-spacing:-.2px;
     }
     .desc{
       margin:0;
       color: var(--muted);
-      font-size: 14px;
-      line-height:1.45;
+      font-size: 13px;
+      line-height:1.4;
     }
     .pricebar{
       display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      margin-top:auto;
-      padding-top: 14px;
+      margin-top:12px;
       color: var(--muted);
       font-weight:850;
-      font-size: 14px;
+      font-size: 13px;
     }
     .strike{opacity:.55; text-decoration: line-through}
     .save{
@@ -177,10 +167,10 @@
       font-weight:900;
     }
     .ctaBtn{
-      margin-top:14px;
+      margin-top:12px;
       width:100%;
       display:flex; align-items:center; justify-content:center;
-      min-height:50px;
+      min-height:48px;
       border-radius: 14px;
       border: 0;
       font-weight: 950;
@@ -189,12 +179,11 @@
       color: white;
       cursor:pointer;
       transition:.15s ease;
-      font-size: 15px;
     }
     .ctaBtn:hover{filter:brightness(1.06); transform: translateY(-1px)}
     .ctaBtn:active{transform: translateY(0px)}
 
-    /* Detail layout */
+    /* Detail layout (like screenshot 2/3) */
     .detail{
       display:grid;
       grid-template-columns: 1.45fr .55fr;
@@ -250,12 +239,11 @@
     }
     .badge{
       position:absolute; left:14px; top:14px;
-      padding:7px 12px;
+      padding:7px 10px;
       border-radius: 999px;
       background: rgba(0,0,0,.55);
       border: 1px solid rgba(255,255,255,.16);
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       font-weight: 950;
       font-size: 13px;
     }
@@ -265,29 +253,24 @@
     .featured{align-self:start}
     .stack{align-self:start}
 
-    .metaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px}
+    .metaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
     .h1{
-      margin:14px 0 10px;
+      margin:14px 0 8px;
       font-size: clamp(22px, 2.4vw, 30px);
       font-weight: 950;
       letter-spacing:-.4px;
-      line-height:1.2;
+      line-height:1.15;
     }
     .bullets{
-      margin: 12px 0 0;
+      margin: 10px 0 0;
       padding-left: 18px;
       color: var(--muted);
-      font-size: 14.5px;
-      line-height:1.6;
+      font-size: 14px;
+      line-height:1.55;
     }
-    .bullets li{margin:8px 0}
-    .legal{
-      margin-top: 16px; 
-      color: rgba(255,255,255,.38); 
-      font-size: 9px; 
-      line-height:1.6;
-    }
-    .legalBottom{margin-top: 18px; padding-bottom: 8px}
+    .bullets li{margin:6px 0}
+    .legal{margin-top: 14px; color: rgba(255,255,255,.42); font-size: 10.5px; line-height:1.55}
+    .legalBottom{margin-top: 14px; padding-bottom: 8px}
 
     /* Purchase box */
     .buy{
@@ -295,21 +278,21 @@
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(18,20,26,.92);
       box-shadow: var(--shadow);
-      padding:18px;
+      padding:14px;
       position: sticky;
       top: 78px;
     }
-    .buyTitle{font-weight: 950; letter-spacing:-.2px; margin:0 0 10px; font-size: 16px;}
+    .buyTitle{font-weight: 950; letter-spacing:-.2px; margin:0 0 8px}
     .buyPrice{
       display:flex; align-items:center; gap:10px; flex-wrap:wrap;
       color: var(--muted);
       font-weight: 900;
-      font-size: 14px;
-      margin: 8px 0 14px;
+      font-size: 13px;
+      margin: 6px 0 10px;
     }
     .buyBtn{
       width:100%;
-      min-height:50px;
+      min-height:48px;
       border-radius: 14px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.08);
@@ -320,7 +303,6 @@
       display:grid;
       place-items:center;
       text-decoration:none;
-      font-size: 15px;
     }
     .buyBtn.primary{background: var(--blue); border:0; color:white}
     .buyBtn:hover{filter:brightness(1.05); transform: translateY(-1px)}
@@ -335,185 +317,24 @@
       overflow: hidden;
     }
 
-    /* Mobile Styles */
-    @media (max-width: 768px){
-      :root{
-        --radius2: 18px;
-      }
-      
-      .wrap{padding:0 14px}
-      
-      .toprow{
-        padding:10px 0;
-        gap:10px;
-      }
-      
-      .brand{
-        gap:8px;
-        font-size: 13px;
-      }
-      .brand div:last-child{
-        line-height:1.2;
-        max-width: 120px;
-      }
-      
-      .icon{
-        width:26px;
-        height:26px;
-        border-radius:9px;
-        font-size:12px;
-      }
-      
-      .nav{
-        gap:4px;
-      }
-      .nav label{
-        padding:8px 12px;
-        font-size:13px;
-      }
-
-      main{padding: 16px 0 32px}
-
-      .cards2{
-        grid-template-columns:1fr;
-        gap:16px;
-        margin-top: 14px;
-      }
-      
-      .product .img{
-        height: 200px;
-      }
-      
-      .product .body{
-        padding:14px;
-      }
-      
-      .title{
-        font-size: 16px;
-        margin:10px 0 6px;
-      }
-      
-      .desc{
-        font-size: 13.5px;
-      }
-      
-      .pricebar{
-        font-size: 13px;
-        padding-top: 12px;
-      }
-      
-      .ctaBtn{
-        min-height:48px;
-        font-size: 14px;
-        margin-top:12px;
-      }
-
-      .detail{
-        grid-template-columns:1fr;
-        gap:16px;
-        margin-top: 10px;
-      }
-      
-      .buy{
-        position:relative;
-        top:auto;
-        order: -1;
-        padding:16px;
-        margin-bottom: 4px;
-      }
-      
-      .buyTitle{
-        font-size: 15px;
-      }
-      
-      .buyPrice{
-        font-size: 13px;
-        margin: 6px 0 12px;
-      }
-      
-      .buyBtn{
-        min-height:48px;
-        font-size: 14px;
-      }
-      
-      .heroImg img{
-        height: 220px;
-      }
-      
-      .transGrid{
-        grid-template-columns:1fr;
-        gap:12px;
-        margin-top: 12px;
-      }
-      
-      .featured img{
-        max-height: 380px;
-      }
-      
-      .tile img{
-        max-height: 200px;
-      }
-      
-      .badge{
-        left:12px;
-        top:12px;
-        padding:6px 10px;
-        font-size: 12px;
-      }
-      
-      .stack{gap:12px}
-
-      .metaRow{
-        margin-top: 12px;
-      }
-      
-      .h1{
-        font-size: 20px;
-        margin:12px 0 8px;
-        line-height:1.25;
-      }
-      
-      .bullets{
-        font-size: 13.5px;
-        line-height:1.55;
-        padding-left: 16px;
-      }
-      
-      .bullets li{margin:6px 0}
-      
-      .legal{
-        font-size: 8px;
-        line-height:1.55;
-        margin-top: 14px;
-      }
-      
-      .legalBottom{
-        margin-top: 16px;
-      }
+    @media (max-width: 980px){
+.toprow{padding:8px 0
+      .buy{box-shadow:none}
     }
-    
-    /* Small phones */
-    @media (max-width: 380px){
-      .nav label{
-        padding:7px 10px;
-        font-size:12px;
-      }
-      
-      .brand div:last-child{
-        max-width: 100px;
-        font-size: 12px;
-      }
-      
-      .product .img{
-        height: 180px;
-      }
-      
-      .heroImg img{
-        height: 180px;
-      }
+      .brand{gap:8px}
+      .brand div:last-child{font-size:14px; line-height:1.1}
+      .icon{width:24px;height:24px;border-radius:9px;font-size:12px}
+      .nav label{padding:8px 10px; font-size:13px}
+
+      .cards2{grid-template-columns:1fr}
+      .detail{grid-template-columns:1fr}
+      .buy{position:relative; top:auto}
+      .heroImg img{height: 320px}
+      .transGrid{grid-template-columns:1fr}
+      .featured img{max-height: 460px}
+      .tile img{max-height: 260px}
     }
   </style>
-<base target="_blank">
 </head>
 
 <body>
@@ -546,7 +367,7 @@
         <div class="wrap narrow">
           <div class="cards2">
 
-            <!-- Coaching card -->
+            <!-- Coaching card (homepage uses ONLY side profile image) -->
             <div class="product" role="article" aria-label="Coaching product card">
               <div class="img">
                 <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75"
@@ -638,7 +459,7 @@
               <li>All Sources</li>
               <li>Literally anything else you can think of....</li>
             </ul>
-          </div>
+</div>
 
           <aside class="buy" aria-label="Purchase box">
             <div class="buyTitle">Coaching - 1 Month</div>
@@ -656,9 +477,11 @@
           </aside>
         </div>
 
+
         <div class="legal legalBottom">
           This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information, and you agree to hold the provider harmless from any related claims.
         </div>
+
       </section>
 
       <!-- SOURCE LIST -->
@@ -675,7 +498,7 @@
             </div>
 
             <div class="h1">Oils | Peps | HGH | Ancillaries | Infigratinib + Vosoritide | Nootropics | +MORE</div>
-          </div>
+</div>
 
           <aside class="buy" aria-label="Purchase box">
             <div class="buyTitle">Source List</div>
@@ -693,14 +516,16 @@
           </aside>
         </div>
 
+
         <div class="legal legalBottom">
           This content is provided strictly for informational and educational purposes only.
-          I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available, research data, historical information, or third-party listings that are not owned, operated, or controlled by me.
-          All compounds and materials referenced may be subject to local, state, federal, or international laws and regulations. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance.
-          Nothing contained here should be interpreted as medical advice, dosing guidance, usage instruction, or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes where legally permitted.
-          By accessing this content, you acknowledge that you are solely responsible for your own actions, decisions, and legal compliance. I assume no liability for misuse, illegal use, third-party transactions, or damages resulting from the use or interpretation of this information.
-          If you do not agree with these terms, do not access or use this content.
+              I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available, research data, historical information, or third-party listings that are not owned, operated, or controlled by me.
+              All compounds and materials referenced may be subject to local, state, federal, or international laws and regulations. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance.
+              Nothing contained here should be interpreted as medical advice, dosing guidance, usage instruction, or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes where legally permitted.
+              By accessing this content, you acknowledge that you are solely responsible for your own actions, decisions, and legal compliance. I assume no liability for misuse, illegal use, third-party transactions, or damages resulting from the use or interpretation of this information.
+              If you do not agree with these terms, do not access or use this content.
         </div>
+
       </section>
 
     </div>
