@@ -2,537 +2,540 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>EnhancementsExplained — Coaching & Source List</title>
   <meta name="description" content="Coaching services and a curated source list." />
   <style>
     :root{
-      --bg:#06080c;
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --faint: rgba(255,255,255,.55);
-      --line: rgba(255,255,255,.11);
-      --blue: #2b66ff;
-      --radius2: 26px;
-      --shadow: 0 24px 80px rgba(0,0,0,.55);
-      --max: 1140px;
-      --maxNarrow: 980px;
+      /* Theme Variables */
+      --bg: #050505;
+      --bg-panel: #0a0a0a;
+      --text: #ececec;
+      --muted: #a1a1aa;
+      --faint: #52525b;
+      --border: rgba(255,255,255,0.08);
+      --highlight: rgba(255,255,255,0.03);
+      --blue: #3b82f6;
+      --blue-glow: rgba(59, 130, 246, 0.5);
+      
+      /* Layout */
+      --radius: 20px;
+      --radius-sm: 12px;
+      --max: 1000px; /* Tighter container for better readability */
+      --header-h: 70px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(1100px 680px at 20% 10%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(900px 620px at 80% 25%, rgba(45,102,255,.10), transparent 60%),
-        var(--bg);
+      background-color: var(--bg);
+      /* Subtle, deep background mesh */
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding-bottom: 40px;
     }
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-    .wrap.narrow{max-width:var(--maxNarrow)}
+    a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+    img { display: block; width: 100%; height: auto; object-fit: cover; }
 
-    /* --- CSS-only routing (no JS, works everywhere) --- */
-    .tabs{position:absolute; left:-9999px; top:-9999px; opacity:0}
+    /* --- LAYOUT UTILS --- */
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* --- ROUTING (CSS Only) --- */
+    .tabs { display: none; } /* Hide radios */
+    
+    /* Logic: Show specific ID based on checked radio */
     #tab-home:checked ~ main #home,
     #tab-coaching:checked ~ main #coaching,
-    #tab-source:checked ~ main #source{display:block}
-    #tab-home:checked ~ main #coaching,
-    #tab-home:checked ~ main #source,
-    #tab-coaching:checked ~ main #home,
-    #tab-coaching:checked ~ main #source,
-    #tab-source:checked ~ main #home,
-    #tab-source:checked ~ main #coaching{display:none}
+    #tab-source:checked ~ main #source {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    
+    .panel { display: none; } /* Default hidden */
 
-    /* Top bar */
-    .top{
-      position:sticky; top:0; z-index:50;
-      background: rgba(6,8,12,.72);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .toprow{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px;
-      padding:14px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:850; letter-spacing:.2px;
-    }
-    .icon{
-      width:28px; height:28px; border-radius:10px;
-      background: linear-gradient(180deg, rgba(45,102,255,1), rgba(45,102,255,.25));
-      display:grid; place-items:center;
-      font-size:13px; font-weight:900;
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 40px rgba(43,102,255,.20);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .nav label{
-      color: var(--muted);
-      font-weight:800;
-      font-size:14px;
-      padding:10px 12px;
-      border-radius: 999px;
-      cursor:pointer;
-      transition:.15s ease;
-      user-select:none;
-      border:1px solid transparent;
-    }
-    .nav label:hover{background: rgba(255,255,255,.06); color: var(--text)}
-    #tab-home:checked ~ header .nav label[for="tab-home"],
-    #tab-coaching:checked ~ header .nav label[for="tab-coaching"],
-    #tab-source:checked ~ header .nav label[for="tab-source"]{
-      background: rgba(255,255,255,.08);
-      color: var(--text);
-      border-color: rgba(255,255,255,.10);
+    /* --- HEADER --- */
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: auto;
+      padding: 12px 0;
     }
 
-    main{padding: 26px 0 44px}
-    .panel{display:none}
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
 
-    /* Homepage cards (like screenshot 1) */
-    .cards2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-      margin-top: 18px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.02em;
     }
-    .product{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      border-radius: var(--radius2);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-    }
-    .product .img{
-      height: 240px;
-      background: rgba(0,0,0,.22);
-      overflow:hidden;
-    }
-    .product .img img{
-      width:100%; height:100%;
-      object-fit: cover;
-      object-position: center;
-      filter: saturate(1.05) contrast(1.02);
-    }
-    .product .body{padding:14px 16px 16px}
-    .rowline{
-      display:flex; align-items:center; gap:10px;
-      margin-top:10px; flex-wrap:wrap;
-      color: var(--muted);
-      font-weight:800;
-      font-size:13px;
-    }
-    .mini{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-    }
-    .title{
-      margin:10px 0 6px;
-      font-size: 16px;
+
+    .logo-box {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--blue), #1e40af);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
       font-weight: 900;
-      letter-spacing:-.2px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
-    .desc{
-      margin:0;
-      color: var(--muted);
+
+    .nav {
+      display: flex;
+      background: var(--highlight);
+      padding: 4px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+    }
+
+    .nav label {
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 99px;
       font-size: 13px;
-      line-height:1.4;
-    }
-    .pricebar{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      margin-top:12px;
+      font-weight: 600;
       color: var(--muted);
-      font-weight:850;
-      font-size: 13px;
+      transition: all 0.2s ease;
     }
-    .strike{opacity:.55; text-decoration: line-through}
-    .save{
-      font-size:12px;
-      padding:5px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight:900;
+
+    .nav label:hover { color: var(--text); }
+
+    /* Active Nav State */
+    #tab-home:checked ~ .top label[for="tab-home"],
+    #tab-coaching:checked ~ .top label[for="tab-coaching"],
+    #tab-source:checked ~ .top label[for="tab-source"] {
+      background: var(--border);
+      color: white;
     }
-    .ctaBtn{
-      margin-top:12px;
-      width:100%;
-      display:flex; align-items:center; justify-content:center;
-      min-height:48px;
-      border-radius: 14px;
-      border: 0;
-      font-weight: 950;
-      letter-spacing:.1px;
+
+    /* --- COMPONENTS --- */
+    
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.1s, filter 0.2s;
+      border: none;
+    }
+    .btn:active { transform: scale(0.98); }
+    
+    .btn-primary {
       background: var(--blue);
       color: white;
-      cursor:pointer;
-      transition:.15s ease;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
     }
-    .ctaBtn:hover{filter:brightness(1.06); transform: translateY(-1px)}
-    .ctaBtn:active{transform: translateY(0px)}
+    .btn-primary:hover { filter: brightness(1.1); }
 
-    /* Detail layout (like screenshot 2/3) */
-    .detail{
-      display:grid;
-      grid-template-columns: 1.45fr .55fr;
-      gap:18px;
-      align-items:start;
-      margin-top: 12px;
-    }
-    .heroImg{
-      border-radius: var(--radius2);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      box-shadow: var(--shadow);
-    }
-    .heroImg img{
-      width:100%;
-      height: 360px;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /* Coaching transformations */
-    .transGrid{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:14px;
-      align-items: start;
-    }
-    .featured, .tile{
-      border-radius: var(--radius2);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      box-shadow: var(--shadow);
-      position:relative;
-    }
-    .featured img{
-      width:100%;
-      height:auto;
-      max-height: 520px;
-      object-fit: contain;
-      background: rgba(0,0,0,.30);
-      display:block;
-    }
-    .tile img{
-      width:100%;
-      height:auto;
-      max-height: 260px;
-      object-fit: contain;
-      background: rgba(0,0,0,.30);
-      display:block;
-    }
-    .badge{
-      position:absolute; left:14px; top:14px;
-      padding:7px 10px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.55);
-      border: 1px solid rgba(255,255,255,.16);
-      backdrop-filter: blur(8px);
-      font-weight: 950;
-      font-size: 13px;
-    }
-    .stack{display:grid; grid-template-columns:1fr; gap:14px}
-
-    /* Prevent the left featured card from stretching to match the right column height */
-    .featured{align-self:start}
-    .stack{align-self:start}
-
-    .metaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
-    .h1{
-      margin:14px 0 8px;
-      font-size: clamp(22px, 2.4vw, 30px);
-      font-weight: 950;
-      letter-spacing:-.4px;
-      line-height:1.15;
-    }
-    .bullets{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height:1.55;
-    }
-    .bullets li{margin:6px 0}
-    .legal{margin-top: 14px; color: rgba(255,255,255,.42); font-size: 10.5px; line-height:1.55}
-    .legalBottom{margin-top: 14px; padding-bottom: 8px}
-
-    /* Purchase box */
-    .buy{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(18,20,26,.92);
-      box-shadow: var(--shadow);
-      padding:14px;
-      position: sticky;
-      top: 78px;
-    }
-    .buyTitle{font-weight: 950; letter-spacing:-.2px; margin:0 0 8px}
-    .buyPrice{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      color: var(--muted);
-      font-weight: 900;
-      font-size: 13px;
-      margin: 6px 0 10px;
-    }
-    .buyBtn{
-      width:100%;
-      min-height:48px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.08);
-      color: var(--text);
-      font-weight: 950;
-      cursor:pointer;
-      transition:.15s ease;
-      display:grid;
-      place-items:center;
-      text-decoration:none;
-    }
-    .buyBtn.primary{background: var(--blue); border:0; color:white}
-    .buyBtn:hover{filter:brightness(1.05); transform: translateY(-1px)}
-    .buyBtn:active{transform: translateY(0px)}
-    .divider{height:1px; background: rgba(255,255,255,.08); margin:14px 0}
-
-    footer{
-      border-top: 0;
+    .btn-outline {
       background: transparent;
-      padding: 0;
-      height: 0;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { background: var(--highlight); }
+
+    /* Cards */
+    .card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- HOME GRID --- */
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #111;
       overflow: hidden;
     }
-
-    @media (max-width: 980px){
-.toprow{padding:8px 0
-      .buy{box-shadow:none}
+    .product-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s ease;
     }
-      .brand{gap:8px}
-      .brand div:last-child{font-size:14px; line-height:1.1}
-      .icon{width:24px;height:24px;border-radius:9px;font-size:12px}
-      .nav label{padding:8px 10px; font-size:13px}
+    .card:hover .product-img img { transform: scale(1.03); }
 
-      .cards2{grid-template-columns:1fr}
-      .detail{grid-template-columns:1fr}
-      .buy{position:relative; top:auto}
-      .heroImg img{height: 320px}
-      .transGrid{grid-template-columns:1fr}
-      .featured img{max-height: 460px}
-      .tile img{max-height: 260px}
+    .product-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+    
+    .tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    
+    .h2 { font-size: 18px; font-weight: 700; margin: 0 0 8px 0; }
+    .p { font-size: 14px; color: var(--muted); line-height: 1.5; margin: 0 0 16px 0; flex: 1; }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .strike { text-decoration: line-through; color: var(--faint); }
+    .current { font-weight: 700; color: white; }
+    .badge { 
+      background: rgba(34, 197, 94, 0.1); 
+      color: #4ade80; 
+      font-size: 11px; 
+      padding: 4px 8px; 
+      border-radius: 6px; 
+      font-weight: 700; 
+    }
+
+    /* --- DETAIL LAYOUT (Coaching/Source) --- */
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px; /* Sidebar fixed width on desktop */
+      gap: 30px;
+      margin-top: 30px;
+      align-items: start;
+    }
+
+    /* Left Content */
+    .content-area { display: flex; flex-direction: column; gap: 20px; }
+    
+    .hero {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    
+    /* Coaching Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 15px;
+    }
+    .gallery-col { display: flex; flex-direction: column; gap: 15px; }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #111;
+    }
+    .gallery-badge {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      padding: 4px 8px; border-radius: 6px;
+      font-size: 11px; font-weight: 700; border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .detail-title {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 10px 0;
+      background: linear-gradient(to right, #fff, #a1a1aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .feature-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .feature-list li::before {
+      content: "✓";
+      position: absolute; left: 0; top: 1px;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    /* Sidebar (Buy Box) */
+    .sidebar {
+      position: sticky;
+      top: 90px; /* Below header */
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+    }
+    
+    .sidebar-title { font-weight: 800; font-size: 18px; margin: 0 0 10px 0; }
+    .divider { height: 1px; background: var(--border); margin: 15px 0; }
+
+    /* --- LEGAL TEXT (Smaller) --- */
+    .legal-text {
+      font-size: 10px; /* User requested smaller */
+      line-height: 1.5;
+      color: var(--faint);
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      text-align: justify;
+    }
+
+    /* --- MOBILE RESPONSIVENESS --- */
+    @media (max-width: 768px) {
+      .top { padding: 10px 0; }
+      .nav-container { flex-direction: column; gap: 12px; }
+      .nav { width: 100%; justify-content: center; }
+      .nav label { flex: 1; text-align: center; padding: 10px; font-size: 12px; }
+
+      .detail-layout {
+        grid-template-columns: 1fr; /* Stack sidebar below content */
+        gap: 20px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr; /* Stack images vertically */
+      }
+      .gallery-item img {
+        max-height: 400px; /* Cap height so they don't take full screen */
+      }
+
+      .sidebar {
+        position: relative; /* No longer sticky on mobile */
+        top: 0;
+        order: 1; /* Move to bottom if desired, or keep logic simple */
+      }
+      
+      .detail-title { font-size: 22px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Hidden radios control which page is visible -->
+
   <input class="tabs" type="radio" name="tab" id="tab-home" checked>
   <input class="tabs" type="radio" name="tab" id="tab-coaching">
   <input class="tabs" type="radio" name="tab" id="tab-source">
 
   <header class="top">
     <div class="wrap">
-      <div class="toprow">
+      <div class="nav-container">
         <div class="brand">
-          <div class="icon">EC</div>
-          <div>EnhancementsExplained Coaching</div>
+          <div class="logo-box">EC</div>
+          <div>EnhancementsExplained</div>
         </div>
-        <div class="nav" role="navigation" aria-label="Primary">
+        <nav class="nav">
           <label for="tab-home">Home</label>
           <label for="tab-coaching">Coaching</label>
-          <label for="tab-source">Source List</label>
-        </div>
+          <label for="tab-source">Sources</label>
+        </nav>
       </div>
     </div>
   </header>
 
-  <main>
-    <div class="wrap">
+  <main class="wrap">
 
-      <!-- HOME -->
-      <section id="home" class="panel">
-        <div class="wrap narrow">
-          <div class="cards2">
+    <section id="home" class="panel">
+      <div class="home-grid">
+        
+        <article class="card">
+          <div class="product-img">
+             <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75" alt="Coaching" loading="eager" />
+          </div>
+          <div class="product-body">
+            <div class="tag">Most Popular</div>
+            <h2 class="h2">1-on-1 Coaching</h2>
+            <p class="p">Custom protocols, in-depth explanations, and 24/7 DM access to guide your transformation safely.</p>
+            
+            <div class="price-row">
+              <span class="strike">$98.75</span>
+              <span class="current">$79 / mo</span>
+              <span class="badge">-20%</span>
+            </div>
+            
+            <label class="btn btn-primary" for="tab-coaching">View Details</label>
+          </div>
+        </article>
 
-            <!-- Coaching card (homepage uses ONLY side profile image) -->
-            <div class="product" role="article" aria-label="Coaching product card">
-              <div class="img">
-                <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75"
-                     alt="Coaching transformation (side profile)" loading="eager" />
+        <article class="card">
+          <div class="product-img">
+            <img src="https://i.imgur.com/8ar7sag.png" alt="Source List" loading="lazy" />
+          </div>
+          <div class="product-body">
+            <div class="tag">Instant Access</div>
+            <h2 class="h2">Source List</h2>
+            <p class="p">Curated list of sources for oils, peps, HGH, ancillaries, nootropics, and more hard-to-find items.</p>
+            
+            <div class="price-row">
+              <span class="strike">$23.75</span>
+              <span class="current">$19</span>
+              <span class="badge">-20%</span>
+            </div>
+            
+            <label class="btn btn-primary" for="tab-source">View Details</label>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <section id="coaching" class="panel">
+      <div class="detail-layout">
+        
+        <div class="content-area">
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <div class="gallery-badge">Featured Client</div>
+              <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75" alt="Client Transformation 1">
+            </div>
+            <div class="gallery-col">
+              <div class="gallery-item">
+                <img src="https://i.imgur.com/MGDA08V.png" alt="Client Transformation 2">
               </div>
-              <div class="body">
-                <div class="rowline">
-                  <span class="mini"><span class="icon" style="width:18px;height:18px;border-radius:7px;font-size:10px">EC</span> Coaching - 1 Month</span>
-                </div>
-
-                <div class="title">Coaching - 1 Month</div>
-                <p class="desc">1 On 1 Coaching | Customized Protocols | In-Depth Explanations | 24/7 DM Access</p>
-
-                <div class="pricebar">
-                  <span class="strike">$98.75</span>
-                  <span style="color:var(--text)">$79 / month</span>
-                  <span class="save">Save 20%</span>
-                </div>
-
-                <label class="ctaBtn" for="tab-coaching">Join now</label>
+              <div class="gallery-item">
+                <img src="https://i.imgur.com/hlKYBvf.png" alt="Client Transformation 3">
               </div>
             </div>
+          </div>
 
-            <!-- Source list card -->
-            <div class="product" role="article" aria-label="Source list product card">
-              <div class="img">
-                <img src="https://i.imgur.com/8ar7sag.png" alt="Source List banner" loading="lazy" />
-              </div>
-              <div class="body">
-                <div class="rowline">
-                  <span class="mini"><span class="icon" style="width:18px;height:18px;border-radius:7px;font-size:10px">EC</span> Source List</span>
-                </div>
-
-                <div class="title">Source List</div>
-                <p class="desc">Oils | Peps | HGH | Ancillaries | Infigratinib + Vosoritide | Nootropics | +MORE</p>
-
-                <div class="pricebar">
-                  <span class="strike">$23.75</span>
-                  <span style="color:var(--text)">$19</span>
-                  <span class="save">Save 20%</span>
-                </div>
-
-                <label class="ctaBtn" for="tab-source">Buy now</label>
-              </div>
-            </div>
-
+          <div>
+            <div class="tag">By Will</div>
+            <h1 class="detail-title">Complete Pharmacology & Transformation Coaching</h1>
+            
+            <ul class="feature-list">
+              <li>**FULL Customized Pharmacology Protocols** (Physique, Height, Facial Aesthetics)</li>
+              <li>Bloodwork Analysis & Review</li>
+              <li>Proper Supplementation & Ancillary Planning</li>
+              <li>Harm Mitigation Strategies</li>
+              <li>24/7 DM Access & Unlimited Questions</li>
+              <li>Personalized Training/Diet Suggestions (Pharmacology focused)</li>
+              <li>Access to All Sources</li>
+            </ul>
           </div>
         </div>
-      </section>
 
-      <!-- COACHING -->
-      <section id="coaching" class="panel">
-        <div class="detail">
+        <aside class="sidebar">
+          <h3 class="sidebar-title">Monthly Coaching</h3>
+          <div class="price-row">
+            <span class="strike">$98.75</span>
+            <span class="current" style="font-size:18px">$79 / month</span>
+            <span class="badge">SAVE 20%</span>
+          </div>
+
+          <a href="YOUR_COACHING_CHECKOUT_LINK" target="_blank" class="btn btn-primary">Join Now</a>
+          
+          <div class="divider"></div>
+          
+          <label for="tab-source" class="btn btn-outline" style="margin-bottom:10px">View Source List</label>
+          <label for="tab-home" class="btn btn-outline">Back Home</label>
+        </aside>
+
+      </div>
+
+      <div class="legal-text">
+        <strong>Disclaimer:</strong> This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information.
+      </div>
+    </section>
+
+
+    <section id="source" class="panel">
+      <div class="detail-layout">
+        
+        <div class="content-area">
+          <div class="hero">
+            <img src="https://i.imgur.com/8ar7sag.png" alt="Source List Banner" style="width:100%; aspect-ratio:21/9; object-fit:cover;">
+          </div>
+
           <div>
-            <div class="transGrid">
-              <div class="featured">
-                <div class="badge">Client 1 (Featured)</div>
-                <img src="https://img-v2-prod.whop.com/unsafe/rs:fit:3840:0/plain/https%3A%2F%2Fassets-2-prod.whop.com%2Fuploads%2Fuser_22324828%2Fimage%2Fbots%2F2026-02-06%2F94fefcf6-8d9a-4cdc-9a56-101bb0408109.png@avif?w=3840&q=75"
-                     alt="Client 1 transformation" loading="eager" />
-              </div>
-
-              <div class="stack">
-                <div class="tile">
-                  <div class="badge">Client 2</div>
-                  <img src="https://i.imgur.com/MGDA08V.png" alt="Client 2 transformation" loading="lazy" />
-                </div>
-                <div class="tile">
-                  <div class="badge">Client 3</div>
-                  <img src="https://i.imgur.com/hlKYBvf.png" alt="Client 3 transformation" loading="lazy" />
-                </div>
-              </div>
-            </div>
-
-            <div class="metaRow">
-              <span class="mini">$79 / month</span>
-              <span class="mini">By Will</span>
-            </div>
-
-            <div class="h1">1 On 1 Coaching | Customized Protocols | In-Depth Explanations | 24/7 DM Access</div>
-
-            <ul class="bullets">
-              <li>FULL Customized Pharmacology Protocols (Physique, Height, Facial Aesthetics, Etc)</li>
-              <li>Bloodwork Help + Review</li>
-              <li>Proper Supplementation + Ancillary Use</li>
-              <li>Harm Mitigation</li>
-              <li>24/7 DM Access To Ask Me Anything</li>
-              <li>Unlimited Texts/Questions</li>
-              <li>Personalized Training/Diet Plan (Although I mainly specialize in the pharmacology side of things.)</li>
-              <li>All Sources</li>
-              <li>Literally anything else you can think of....</li>
+            <div class="tag">Verified Sources</div>
+            <h1 class="detail-title">The Complete Source List</h1>
+            <p style="color:var(--muted); line-height:1.6;">
+              Stop guessing. Get access to the curated list of providers for research and enhancement purposes. Includes sources for:
+            </p>
+            <ul class="feature-list">
+              <li>Oils & Injectables</li>
+              <li>Peptides (Peps)</li>
+              <li>HGH (Human Growth Hormone)</li>
+              <li>Ancillaries & PCT</li>
+              <li>Infigratinib + Vosoritide</li>
+              <li>Nootropics & Cognitive Enhancers</li>
             </ul>
-</div>
-
-          <aside class="buy" aria-label="Purchase box">
-            <div class="buyTitle">Coaching - 1 Month</div>
-            <div class="buyPrice">
-              <span class="strike">$98.75</span>
-              <span style="color:var(--text)">$79 / month</span>
-              <span class="save">Save 20%</span>
-            </div>
-
-            <a class="buyBtn primary" href="YOUR_COACHING_CHECKOUT_LINK" target="_blank" rel="noopener">Join now</a>
-            <div class="divider"></div>
-            <label class="buyBtn" for="tab-source">View Source List</label>
-            <div class="divider"></div>
-            <label class="buyBtn" for="tab-home">Back to Home</label>
-          </aside>
+          </div>
         </div>
 
+        <aside class="sidebar">
+          <h3 class="sidebar-title">Unlock Access</h3>
+          <div class="price-row">
+            <span class="strike">$23.75</span>
+            <span class="current" style="font-size:18px">$19.00</span>
+            <span class="badge">ONE TIME</span>
+          </div>
 
-        <div class="legal legalBottom">
-          This information is provided for educational and informational purposes only and does not constitute medical advice, diagnosis, treatment, or prescription. I am not a licensed medical professional, and no doctor-patient or healthcare relationship is created. Use of performance-enhancing drugs, pharmaceuticals, hormones, peptides, or related compounds carries significant health risks, including potentially serious or permanent injury or death. By viewing or using this information, you acknowledge that you are acting entirely at your own risk, and assume all risks, known and unknown. You are solely responsible for your health decisions, including obtaining medical supervision, bloodwork, and ensuring compliance with all applicable laws and athletic organization rules. No guarantees are made regarding safety, effectiveness, or outcomes. To the fullest extent permitted by law, I am not liable for any injury, illness, loss, or damages arising from the use or misuse of this information, and you agree to hold the provider harmless from any related claims.
-        </div>
+          <a href="YOUR_SOURCE_LIST_CHECKOUT_LINK" target="_blank" class="btn btn-primary">Buy Now</a>
+          
+          <div class="divider"></div>
+          
+          <label for="tab-coaching" class="btn btn-outline" style="margin-bottom:10px">View Coaching</label>
+          <label for="tab-home" class="btn btn-outline">Back Home</label>
+        </aside>
 
-      </section>
+      </div>
 
-      <!-- SOURCE LIST -->
-      <section id="source" class="panel">
-        <div class="detail">
-          <div>
-            <div class="heroImg">
-              <img src="https://i.imgur.com/8ar7sag.png" alt="Source List hero image" loading="eager" />
-            </div>
+      <div class="legal-text">
+        <strong>Legal Notice:</strong> This content is provided strictly for informational and educational purposes only. I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available research data or third-party listings not controlled by me. All compounds referenced may be subject to local, state, federal, or international laws. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance. Nothing contained here should be interpreted as medical advice or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes. By accessing this content, you acknowledge that you are solely responsible for your own actions.
+      </div>
+    </section>
 
-            <div class="metaRow">
-              <span class="mini">$19</span>
-              <span class="mini">By Will</span>
-            </div>
-
-            <div class="h1">Oils | Peps | HGH | Ancillaries | Infigratinib + Vosoritide | Nootropics | +MORE</div>
-</div>
-
-          <aside class="buy" aria-label="Purchase box">
-            <div class="buyTitle">Source List</div>
-            <div class="buyPrice">
-              <span class="strike">$23.75</span>
-              <span style="color:var(--text)">$19</span>
-              <span class="save">Save 20%</span>
-            </div>
-
-            <a class="buyBtn primary" href="YOUR_SOURCE_LIST_CHECKOUT_LINK" target="_blank" rel="noopener">Buy now</a>
-            <div class="divider"></div>
-            <label class="buyBtn" for="tab-coaching">View Coaching</label>
-            <div class="divider"></div>
-            <label class="buyBtn" for="tab-home">Back to Home</label>
-          </aside>
-        </div>
-
-
-        <div class="legal legalBottom">
-          This content is provided strictly for informational and educational purposes only.
-              I do not manufacture, sell, distribute, or directly facilitate the sale of any controlled substances, prescription medications, or regulated compounds. Any information provided is publicly available, research data, historical information, or third-party listings that are not owned, operated, or controlled by me.
-              All compounds and materials referenced may be subject to local, state, federal, or international laws and regulations. It is the sole responsibility of the end user to understand and comply with all applicable laws in their jurisdiction before purchasing, possessing, researching, or using any substance.
-              Nothing contained here should be interpreted as medical advice, dosing guidance, usage instruction, or encouragement of human consumption. Many compounds discussed are intended strictly for laboratory research purposes where legally permitted.
-              By accessing this content, you acknowledge that you are solely responsible for your own actions, decisions, and legal compliance. I assume no liability for misuse, illegal use, third-party transactions, or damages resulting from the use or interpretation of this information.
-              If you do not agree with these terms, do not access or use this content.
-        </div>
-
-      </section>
-
-    </div>
   </main>
-
-  <footer aria-hidden="true">
-    <div class="wrap"></div>
-  </footer>
 </body>
 </html>
