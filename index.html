@@ -56,7 +56,10 @@
     #tab-home:checked ~ main #home,
     #tab-coaching:checked ~ main #coaching,
     #tab-protocol:checked ~ main #protocol,
-    #tab-source:checked ~ main #source {
+    #tab-source:checked ~ main #source,
+    #tab-pay-coaching:checked ~ main #pay-coaching,
+    #tab-pay-protocol:checked ~ main #pay-protocol,
+    #tab-pay-source:checked ~ main #pay-source {
       display: block;
       animation: fadeIn 0.4s ease;
     }
@@ -307,6 +310,71 @@
     }
     
     .sidebar-title { font-weight: 800; font-size: 18px; margin: 0 0 10px 0; }
+
+    .payment-card{
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+    }
+    .payment-grid{
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 30px;
+      margin-top: 30px;
+      align-items: start;
+    }
+    .pill-row{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--highlight);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .steps{
+      margin: 14px 0 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .steps li{ margin: 10px 0; }
+    .telegram{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(59, 130, 246, 0.08);
+    }
+    .telegram strong{ font-size: 14px; }
+    .telegram a{ color: white; font-weight: 800; }
+    .small-note{
+      font-size: 12px;
+      color: var(--faint);
+      line-height: 1.5;
+      margin-top: 14px;
+    }
+    @media (max-width: 768px) {
+      .payment-grid{ grid-template-columns: 1fr; gap: 18px; }
+    }
+
     .divider { height: 1px; background: var(--border); margin: 15px 0; }
 
     .legal-text {
@@ -338,6 +406,10 @@
   <input class="tabs" type="radio" name="tab" id="tab-coaching">
   <input class="tabs" type="radio" name="tab" id="tab-protocol">
   <input class="tabs" type="radio" name="tab" id="tab-source">
+
+  <input class="tabs" type="radio" name="tab" id="tab-pay-coaching">
+  <input class="tabs" type="radio" name="tab" id="tab-pay-protocol">
+  <input class="tabs" type="radio" name="tab" id="tab-pay-source">
 
   <header class="top">
     <div class="wrap">
@@ -453,7 +525,7 @@
             <span class="current" style="font-size:18px">$79 / month</span>
             <span class="badge">SAVE 20%</span>
           </div>
-          <a href="YOUR_COACHING_CHECKOUT_LINK" target="_blank" class="btn btn-primary">Join Now</a>
+          <label for="tab-pay-coaching" class="btn btn-primary">Join Now</label>
           <div class="divider"></div>
           <label for="tab-home" class="btn btn-outline">Back Home</label>
         </aside>
@@ -488,7 +560,7 @@
             <span class="current" style="font-size:18px">$39.00</span>
             <span class="badge">ONE TIME</span>
           </div>
-          <a href="YOUR_PROTOCOL_CHECKOUT_LINK" target="_blank" class="btn btn-primary">Get My Protocol</a>
+          <label for="tab-pay-protocol" class="btn btn-primary">Continue to Payment</label>
           <div class="divider"></div>
           <label for="tab-home" class="btn btn-outline">Back Home</label>
         </aside>
@@ -524,7 +596,146 @@
             <span class="current" style="font-size:18px">$19.00</span>
             <span class="badge">ONE TIME</span>
           </div>
-          <a href="YOUR_SOURCE_LIST_CHECKOUT_LINK" target="_blank" class="btn btn-primary">Buy Now</a>
+          <label for="tab-pay-source" class="btn btn-primary">Continue to Payment</label>
+          <div class="divider"></div>
+          <label for="tab-home" class="btn btn-outline">Back Home</label>
+        </aside>
+      </div>
+    </section>
+
+
+    <!-- PAYMENT INSTRUCTIONS (SEPARATE PAGE) -->
+    <section id="pay-coaching" class="panel">
+      <div class="payment-grid">
+        <div class="payment-card">
+          <div class="tag">Payment Instructions</div>
+          <h1 class="detail-title">Monthly Coaching — Checkout</h1>
+          <p class="p" style="max-width: 70ch;">
+            To keep things fast and private, payments are completed directly in Telegram.
+            Message me with the service you want and your preferred payment method, and I’ll reply with the exact payment details.
+          </p>
+
+          <div class="pill-row" aria-label="Accepted payment methods">
+            <span class="pill">Venmo</span>
+            <span class="pill">PayPal</span>
+            <span class="pill">Crypto</span>
+          </div>
+
+          <div class="telegram">
+            <div>
+              <strong>Telegram:</strong>
+              <div style="color:var(--muted); font-size:13px;">t.me/willyenhanced</div>
+            </div>
+            <a href="https://t.me/willyenhanced" target="_blank" rel="noopener">Open Chat →</a>
+          </div>
+
+          <ol class="steps">
+            <li>Open Telegram using the link above.</li>
+            <li>Send a message with: <strong>“Monthly Coaching”</strong> + your preferred payment method (<strong>Venmo</strong>, <strong>PayPal</strong>, or <strong>Crypto</strong>).</li>
+            <li>I’ll confirm the total and send the payment handle/address.</li>
+            <li>Once payment is received, you’ll get onboarding instructions and we’ll get started.</li>
+          </ol>
+
+          <div class="small-note">
+            Please include your Telegram username and any relevant order details in your first message.
+            For crypto, mention the chain you prefer (e.g., BTC, ETH, etc.) so I can send the correct address.
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <h3 class="sidebar-title">Need to change your selection?</h3>
+          <p class="p" style="margin-bottom: 14px;">You can go back at any time.</p>
+          <label for="tab-coaching" class="btn btn-outline">Back to Coaching</label>
+          <div class="divider"></div>
+          <label for="tab-home" class="btn btn-outline">Back Home</label>
+        </aside>
+      </div>
+    </section>
+
+    <section id="pay-protocol" class="panel">
+      <div class="payment-grid">
+        <div class="payment-card">
+          <div class="tag">Payment Instructions</div>
+          <h1 class="detail-title">Personalized Protocol Design — Checkout</h1>
+          <p class="p" style="max-width: 70ch;">
+            Payments for Protocol Design are completed directly in Telegram. Message me with your order and preferred payment method, and I’ll send the payment details.
+          </p>
+
+          <div class="pill-row" aria-label="Accepted payment methods">
+            <span class="pill">Venmo</span>
+            <span class="pill">PayPal</span>
+            <span class="pill">Crypto</span>
+          </div>
+
+          <div class="telegram">
+            <div>
+              <strong>Telegram:</strong>
+              <div style="color:var(--muted); font-size:13px;">t.me/willyenhanced</div>
+            </div>
+            <a href="https://t.me/willyenhanced" target="_blank" rel="noopener">Open Chat →</a>
+          </div>
+
+          <ol class="steps">
+            <li>Open Telegram using the link above.</li>
+            <li>Send a message with: <strong>“Protocol Design”</strong> + your preferred payment method (<strong>Venmo</strong>, <strong>PayPal</strong>, or <strong>Crypto</strong>).</li>
+            <li>I’ll confirm the total and send the payment handle/address.</li>
+            <li>After payment, you’ll receive next steps for intake and delivery.</li>
+          </ol>
+
+          <div class="small-note">
+            If you already know your goals (e.g., physique, performance, etc.), include them in your message to speed things up.
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <h3 class="sidebar-title">Need to change your selection?</h3>
+          <p class="p" style="margin-bottom: 14px;">You can go back at any time.</p>
+          <label for="tab-protocol" class="btn btn-outline">Back to Protocols</label>
+          <div class="divider"></div>
+          <label for="tab-home" class="btn btn-outline">Back Home</label>
+        </aside>
+      </div>
+    </section>
+
+    <section id="pay-source" class="panel">
+      <div class="payment-grid">
+        <div class="payment-card">
+          <div class="tag">Payment Instructions</div>
+          <h1 class="detail-title">Source List — Checkout</h1>
+          <p class="p" style="max-width: 70ch;">
+            To purchase the Source List, message me on Telegram with your order and preferred payment method. I’ll reply with the payment details and next steps.
+          </p>
+
+          <div class="pill-row" aria-label="Accepted payment methods">
+            <span class="pill">Venmo</span>
+            <span class="pill">PayPal</span>
+            <span class="pill">Crypto</span>
+          </div>
+
+          <div class="telegram">
+            <div>
+              <strong>Telegram:</strong>
+              <div style="color:var(--muted); font-size:13px;">t.me/willyenhanced</div>
+            </div>
+            <a href="https://t.me/willyenhanced" target="_blank" rel="noopener">Open Chat →</a>
+          </div>
+
+          <ol class="steps">
+            <li>Open Telegram using the link above.</li>
+            <li>Send a message with: <strong>“Source List”</strong> + your preferred payment method (<strong>Venmo</strong>, <strong>PayPal</strong>, or <strong>Crypto</strong>).</li>
+            <li>I’ll confirm the total and send the payment handle/address.</li>
+            <li>Once payment is received, you’ll receive access to the Source List.</li>
+          </ol>
+
+          <div class="small-note">
+            Please do not include sensitive payment details in your first message—just the product name and preferred payment method.
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <h3 class="sidebar-title">Need to change your selection?</h3>
+          <p class="p" style="margin-bottom: 14px;">You can go back at any time.</p>
+          <label for="tab-source" class="btn btn-outline">Back to Sources</label>
           <div class="divider"></div>
           <label for="tab-home" class="btn btn-outline">Back Home</label>
         </aside>
