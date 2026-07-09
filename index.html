@@ -217,19 +217,38 @@
     .price-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-bottom: 16px;
       font-size: 14px;
     }
-    .strike { text-decoration: line-through; color: var(--faint); }
-    .current { font-weight: 700; color: white; }
+    .current {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(59, 130, 246, 0.45);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(255,255,255,0.06));
+      color: white;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      box-shadow: 0 0 18px rgba(59, 130, 246, 0.22), inset 0 1px 0 rgba(255,255,255,0.08);
+      text-shadow: 0 0 12px rgba(255,255,255,0.18);
+    }
     .badge { 
-      background: rgba(34, 197, 94, 0.1); 
-      color: #4ade80; 
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 130, 246, 0.12); 
+      color: #93c5fd; 
+      border: 1px solid rgba(59, 130, 246, 0.35);
       font-size: 11px; 
-      padding: 4px 8px; 
-      border-radius: 6px; 
-      font-weight: 700; 
+      padding: 6px 9px; 
+      border-radius: 999px; 
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0 14px rgba(59, 130, 246, 0.14);
     }
 
     .detail-layout {
@@ -442,9 +461,7 @@
             <h2 class="h2">1-on-1 Coaching</h2>
             <p class="p">Custom protocols, in-depth explanations, and 24/7 DM access to guide your transformation safely.</p>
             <div class="price-row">
-              <span class="strike">$98.75</span>
               <span class="current">$79 / 2 months</span>
-              <span class="badge">-20%</span>
             </div>
             <label class="btn btn-primary" for="tab-coaching">View Details</label>
           </div>
@@ -459,9 +476,8 @@
             <h2 class="h2">Personalized Protocol Design</h2>
             <p class="p">Receive a one-time, deep-dive pharmaceutical blueprint tailored to your specific genetic goals.</p>
             <div class="price-row">
-              <span class="strike">$48.75</span>
               <span class="current">$39</span>
-              <span class="badge">-20%</span>
+              <span class="badge">ONE TIME</span>
             </div>
             <label class="btn btn-primary" for="tab-protocol">View Details</label>
           </div>
@@ -476,9 +492,8 @@
             <h2 class="h2">Source List</h2>
             <p class="p">Curated list of sources for oils, peps, HGH, ancillaries, nootropics, and more hard-to-find items.</p>
             <div class="price-row">
-              <span class="strike">$23.75</span>
               <span class="current">$19</span>
-              <span class="badge">-20%</span>
+              <span class="badge">ONE TIME</span>
             </div>
             <label class="btn btn-primary" for="tab-source">View Details</label>
           </div>
@@ -524,9 +539,7 @@
         <aside class="sidebar">
           <h3 class="sidebar-title">Monthly Coaching</h3>
           <div class="price-row">
-            <span class="strike">$98.75</span>
             <span class="current" style="font-size:18px">$79 / 2 months</span>
-            <span class="badge">SAVE 20%</span>
           </div>
           <label for="tab-pay-coaching" class="btn btn-primary">Join Now</label>
           <div class="divider"></div>
@@ -559,7 +572,6 @@
         <aside class="sidebar">
           <h3 class="sidebar-title">Protocol Blueprint</h3>
           <div class="price-row">
-            <span class="strike">$48.75</span>
             <span class="current" style="font-size:18px">$39.00</span>
             <span class="badge">ONE TIME</span>
           </div>
@@ -587,7 +599,7 @@
               <li>Peptides (Peps)</li>
               <li>HGH (Human Growth Hormone)</li>
               <li>Ancillaries & PCT</li>
-              <li>Infigratinib + Erdafitinib ($310 per/g after shipping. Same price for both)</li>
+              <li>Erdafitinib/Infigratinib ($295 per/g after shipping+fees. Same price for both)</li>
               <li>Nootropics & Cognitive Enhancers</li>
             </ul>
           </div>
@@ -595,7 +607,6 @@
         <aside class="sidebar">
           <h3 class="sidebar-title">Unlock Access</h3>
           <div class="price-row">
-            <span class="strike">$23.75</span>
             <span class="current" style="font-size:18px">$19.00</span>
             <span class="badge">ONE TIME</span>
           </div>
