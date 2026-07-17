@@ -25,7 +25,6 @@
       --radius: 20px;
       --radius-sm: 12px;
       --max: 1100px; 
-      --header-h: 70px;
     }
 
     * { 
@@ -56,7 +55,6 @@
       display: block; 
       width: 100%; 
       height: auto; 
-      object-fit: cover; 
     }
 
     .wrap {
@@ -338,13 +336,20 @@
       overflow: hidden;
       border: 1px solid var(--border);
       background: #111;
-      aspect-ratio: 16 / 11;
+      min-height: 260px; /* Flexible height */
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Changed to contain to avoid aggressive cropping */
+      object-position: center;
+      background: #0a0a0a;
     }
     .gallery-badge {
       position: absolute; 
       top: 12px; 
       left: 12px;
-      background: rgba(0,0,0,0.7); 
+      background: rgba(0,0,0,0.75); 
       backdrop-filter: blur(6px);
       padding: 5px 10px; 
       border-radius: 8px;
@@ -352,6 +357,7 @@
       font-weight: 700; 
       border: 1px solid rgba(255,255,255,0.12);
       color: white;
+      z-index: 2;
     }
 
     .detail-title {
@@ -473,6 +479,7 @@
       .sidebar { position: relative; top: 0; }
       .detail-title { font-size: 26px; }
       .nav label { padding: 10px 14px; font-size: 13px; }
+      .gallery-item { min-height: 220px; }
     }
 
     .divider { 
@@ -489,11 +496,6 @@
       padding-top: 24px;
       border-top: 1px solid var(--border);
       text-align: justify;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 32px;
     }
   </style>
 </head>
@@ -635,7 +637,7 @@
       <div class="detail-layout">
         <div class="content-area">
           <div class="hero">
-            <img src="https://i.imgur.com/A3o2gIm.png" alt="Protocol Design Banner" style="width:100%; height:auto; object-fit:cover; aspect-ratio:21/9;">
+            <img src="https://i.imgur.com/A3o2gIm.png" alt="Protocol Design Banner" style="width:100%; height:auto; object-fit:cover;">
           </div>
           <div>
             <div class="tag">Pharmacology Focus</div>
@@ -672,7 +674,7 @@
       <div class="detail-layout">
         <div class="content-area">
           <div class="hero">
-            <img src="https://i.imgur.com/n1gFCHz.png" alt="Source List Banner" style="width:100%; height:auto; object-fit:cover; aspect-ratio:21/9;">
+            <img src="https://i.imgur.com/n1gFCHz.png" alt="Source List Banner" style="width:100%; height:auto; object-fit:cover;">
           </div>
           <div>
             <div class="tag">Verified Sources</div>
