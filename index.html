@@ -18,8 +18,8 @@
       --faint: #52525b;
       --border: rgba(255,255,255,0.08);
       --highlight: rgba(255,255,255,0.03);
-      --accent: #00f2ff;
-      --accent-glow: rgba(0, 242, 255, 0.5);
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.5);
       
       /* Layout */
       --radius: 20px;
@@ -38,8 +38,8 @@
       color: var(--text);
       background-color: var(--bg);
       background-image: 
-        radial-gradient(at 30% 20%, rgba(0, 242, 255, 0.12) 0px, transparent 50%),
-        radial-gradient(at 70% 80%, rgba(0, 242, 255, 0.08) 0px, transparent 50%);
+        radial-gradient(at 30% 20%, rgba(59, 130, 246, 0.12) 0px, transparent 50%),
+        radial-gradient(at 70% 80%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
       background-attachment: fixed;
       min-height: 100vh;
       padding-bottom: 60px;
@@ -90,7 +90,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(5, 5, 5, 0.92);
+      background: rgba(5, 5, 5, 0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -117,14 +117,26 @@
     .logo-box {
       width: 36px;
       height: 36px;
-      background: linear-gradient(135deg, var(--accent), #00a8b0);
+      background: linear-gradient(135deg, var(--accent), #1e40af);
       border-radius: 10px;
       display: grid;
       place-items: center;
       font-size: 13px;
       font-weight: 900;
-      color: #000;
-      box-shadow: 0 4px 16px rgba(0, 242, 255, 0.4);
+      color: white;
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+    }
+
+    .tiktok-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--highlight);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border: 1px solid var(--border);
     }
 
     .nav {
@@ -175,14 +187,14 @@
     .btn:active { transform: scale(0.975); }
     
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #00c2cc);
-      color: #000;
+      background: linear-gradient(135deg, var(--accent), #1e40af);
+      color: white;
       font-weight: 700;
-      box-shadow: 0 6px 20px rgba(0, 242, 255, 0.3);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
     }
     .btn-primary:hover { 
       filter: brightness(1.08); 
-      box-shadow: 0 8px 24px rgba(0, 242, 255, 0.4);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
     }
 
     .btn-outline {
@@ -276,21 +288,21 @@
       justify-content: center;
       padding: 8px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(0, 242, 255, 0.5);
-      background: linear-gradient(135deg, rgba(0, 242, 255, 0.2), rgba(255,255,255,0.05));
+      border: 1px solid rgba(59, 130, 246, 0.5);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(255,255,255,0.05));
       color: white;
       font-weight: 700;
       font-size: 15px;
       letter-spacing: 0.02em;
-      box-shadow: 0 0 20px rgba(0, 242, 255, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
     }
     .badge { 
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 242, 255, 0.1); 
+      background: rgba(59, 130, 246, 0.1); 
       color: var(--accent); 
-      border: 1px solid rgba(0, 242, 255, 0.4);
+      border: 1px solid rgba(59, 130, 246, 0.4);
       font-size: 11px; 
       padding: 6px 12px; 
       border-radius: 999px; 
@@ -336,12 +348,12 @@
       overflow: hidden;
       border: 1px solid var(--border);
       background: #111;
-      min-height: 260px; /* Flexible height */
+      min-height: 260px;
     }
     .gallery-item img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Changed to contain to avoid aggressive cropping */
+      object-fit: contain;
       object-position: center;
       background: #0a0a0a;
     }
@@ -391,6 +403,26 @@
       color: var(--accent);
       font-weight: 700;
       font-size: 18px;
+    }
+
+    .tiktok-promo {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 30px 0;
+    }
+
+    .tiktok-pfp {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
     .sidebar {
@@ -459,7 +491,7 @@
       padding: 18px 18px;
       border-radius: 16px;
       border: 1px solid var(--border);
-      background: rgba(0, 242, 255, 0.08);
+      background: rgba(59, 130, 246, 0.08);
     }
     .telegram strong{ font-size: 15px; }
     .telegram a{ 
@@ -480,6 +512,7 @@
       .detail-title { font-size: 26px; }
       .nav label { padding: 10px 14px; font-size: 13px; }
       .gallery-item { min-height: 220px; }
+      .tiktok-promo { flex-direction: column; text-align: center; }
     }
 
     .divider { 
@@ -518,12 +551,17 @@
           <div class="logo-box">EE</div>
           <div>EnhancementsExplained</div>
         </div>
-        <nav class="nav">
-          <label for="tab-home">Home</label>
-          <label for="tab-coaching">Coaching</label>
-          <label for="tab-protocol">Protocols</label>
-          <label for="tab-source">Sources</label>
-        </nav>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <a href="https://www.tiktok.com/@enhancements.explained" target="_blank" rel="noopener" class="tiktok-badge">
+            <strong>@enhancements.explained</strong>
+          </a>
+          <nav class="nav">
+            <label for="tab-home">Home</label>
+            <label for="tab-coaching">Coaching</label>
+            <label for="tab-protocol">Protocols</label>
+            <label for="tab-source">Sources</label>
+          </nav>
+        </div>
       </div>
     </div>
   </header>
@@ -531,8 +569,19 @@
   <main class="wrap">
 
     <section id="home" class="panel">
+      <div class="tiktok-promo">
+        <div class="tiktok-pfp">
+          <img src="https://i.imgur.com/sMry8s8.png" alt="EnhancementsExplained" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div>
+          <div style="color:var(--accent); font-weight:700; font-size:15px;">Follow on TikTok</div>
+          <div style="font-size:22px; font-weight:800; margin:4px 0 6px;">@enhancements.explained</div>
+          <p style="color:var(--muted); margin:0; font-size:14.5px;">Raw, evidence-based breakdowns on pharmacological interventions</p>
+          <a href="https://www.tiktok.com/@enhancements.explained" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600; font-size:14px; display:inline-block; margin-top:8px;">Watch Latest Videos →</a>
+        </div>
+      </div>
+
       <div class="home-grid">
-        
         <article class="card">
           <div class="product-img">
              <img src="https://i.imgur.com/PxJkHd4.jpeg" alt="Coaching Transformation" loading="eager" />
@@ -579,7 +628,6 @@
             <label class="btn btn-primary" for="tab-source">View Details</label>
           </div>
         </article>
-
       </div>
     </section>
 
@@ -604,7 +652,7 @@
             </div>
           </div>
           <div>
-            <div class="tag">By Will</div>
+            <div class="tag">By Will • TikTok @enhancements.explained</div>
             <h1 class="detail-title">Complete Pharmacology &amp; Transformation Coaching</h1>
             <ul class="feature-list">
               <li><strong>Fully Customized Pharmacology Protocols</strong> (Physique, Height, Facial Aesthetics, Performance, or General Optimization)</li>
@@ -640,7 +688,7 @@
             <img src="https://i.imgur.com/A3o2gIm.png" alt="Protocol Design Banner" style="width:100%; height:auto; object-fit:cover;">
           </div>
           <div>
-            <div class="tag">Pharmacology Focus</div>
+            <div class="tag">Pharmacology Focus • Seen on TikTok</div>
             <h1 class="detail-title">Personalized Protocol Design</h1>
             <p style="color:var(--muted); line-height:1.65; margin-bottom: 24px;">
               A one-time, deep-dive pharmacological strategy built specifically for your biology. Following intake of your stats and goals, you will receive a private Google Doc via Telegram. 
@@ -677,7 +725,7 @@
             <img src="https://i.imgur.com/n1gFCHz.png" alt="Source List Banner" style="width:100%; height:auto; object-fit:cover;">
           </div>
           <div>
-            <div class="tag">Verified Sources</div>
+            <div class="tag">Verified Sources • TikTok Favorite</div>
             <h1 class="detail-title">The Complete Source List</h1>
             <p style="color:var(--muted); line-height:1.65;">Curated list of providers for research and enhancement purposes.</p>
             <ul class="feature-list">
@@ -706,7 +754,7 @@
       </div>
     </section>
 
-    <!-- PAYMENT INSTRUCTIONS -->
+    <!-- PAYMENT SECTIONS -->
     <section id="pay-coaching" class="panel">
       <div class="payment-grid">
         <div class="payment-card">
