@@ -357,6 +357,18 @@
       object-position: center;
       background: #0a0a0a;
     }
+
+    /* Keep the featured image at its natural aspect ratio instead of
+       stretching its card to match the full height of the right column. */
+    .gallery-item.featured-client {
+      align-self: start;
+      min-height: 0;
+    }
+
+    .gallery-item.featured-client img {
+      height: auto;
+      object-fit: contain;
+    }
     .gallery-badge {
       position: absolute; 
       top: 12px; 
@@ -635,7 +647,7 @@
       <div class="detail-layout">
         <div class="content-area">
           <div class="gallery-grid">
-            <div class="gallery-item">
+            <div class="gallery-item featured-client">
               <div class="gallery-badge">Featured Client</div>
               <img src="https://i.imgur.com/PxJkHd4.jpeg" alt="Client Transformation 1">
             </div>
@@ -893,5 +905,21 @@
     </section>
 
   </main>
+
+  <script>
+    // Radio-button routing keeps the current page scroll position by default.
+    // Reset it after every route change so each section opens from the top.
+    document.querySelectorAll('input[name="tab"]').forEach((tab) => {
+      tab.addEventListener('change', () => {
+        if (!tab.checked) return;
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
