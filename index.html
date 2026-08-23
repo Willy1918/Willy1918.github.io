@@ -69,10 +69,8 @@
     
     #tab-home:checked ~ main #home,
     #tab-coaching:checked ~ main #coaching,
-    #tab-protocol:checked ~ main #protocol,
     #tab-source:checked ~ main #source,
     #tab-pay-coaching:checked ~ main #pay-coaching,
-    #tab-pay-protocol:checked ~ main #pay-protocol,
     #tab-pay-source:checked ~ main #pay-source {
       display: block;
       animation: fadeIn 0.4s ease forwards;
@@ -162,7 +160,6 @@
 
     #tab-home:checked ~ .top label[for="tab-home"],
     #tab-coaching:checked ~ .top label[for="tab-coaching"],
-    #tab-protocol:checked ~ .top label[for="tab-protocol"],
     #tab-source:checked ~ .top label[for="tab-source"] {
       background: var(--border);
       color: white;
@@ -549,11 +546,9 @@
 
   <input class="tabs" type="radio" name="tab" id="tab-home" checked>
   <input class="tabs" type="radio" name="tab" id="tab-coaching">
-  <input class="tabs" type="radio" name="tab" id="tab-protocol">
   <input class="tabs" type="radio" name="tab" id="tab-source">
 
   <input class="tabs" type="radio" name="tab" id="tab-pay-coaching">
-  <input class="tabs" type="radio" name="tab" id="tab-pay-protocol">
   <input class="tabs" type="radio" name="tab" id="tab-pay-source">
 
   <header class="top">
@@ -567,7 +562,6 @@
           <nav class="nav">
             <label for="tab-home">Home</label>
             <label for="tab-coaching">Coaching</label>
-            <label for="tab-protocol">Protocols</label>
             <label for="tab-source">Sources</label>
           </nav>
         </div>
@@ -605,24 +599,7 @@
             <label class="btn btn-primary" for="tab-coaching">View Details</label>
           </div>
         </article>
-
-        <article class="card">
-          <div class="product-img">
-            <img src="https://i.imgur.com/A3o2gIm.png" alt="Protocol Design" loading="lazy" />
-          </div>
-          <div class="product-body">
-            <div class="tag">One-Time Setup</div>
-            <h2 class="h2">Personalized Protocol Design</h2>
-            <p class="p">Receive a one-time, deep-dive pharmaceutical blueprint tailored to your specific genetic goals.</p>
-            <div class="price-row">
-              <span class="current">$39</span>
-              <span class="badge">ONE TIME</span>
-            </div>
-            <label class="btn btn-primary" for="tab-protocol">View Details</label>
-          </div>
-        </article>
-
-        <article class="card">
+<article class="card">
           <div class="product-img">
             <img src="https://i.imgur.com/n1gFCHz.png" alt="Source List" loading="lazy" />
           </div>
@@ -688,45 +665,7 @@
         <strong>Legal Notice:</strong> The information, coaching, and educational materials provided through this service are intended solely for informational and educational purposes and do not constitute medical advice, diagnosis, treatment, prescribing, or a substitute for consultation with a licensed healthcare professional. Any discussion of pharmaceuticals, hormones, peptides, research compounds, supplements, bloodwork, biomarkers, side effects, harm mitigation, scientific literature, dosing strategies, or theoretical protocols is educational only and should not be interpreted as a recommendation to use any substance or regimen. You remain solely responsible for all healthcare decisions, obtaining appropriate medical supervision, and complying with applicable laws. No guarantees are made regarding safety, effectiveness, performance, physique, height, aesthetics, or any other outcome. Individual responses vary, and many discussed interventions carry significant known and unknown risks. To the fullest extent permitted by law, you voluntarily assume all risks associated with your decisions and agree that the provider shall not be liable for any damages arising from your use of or reliance upon the information provided.
       </div>
     </section>
-
-    <section id="protocol" class="panel">
-      <div class="detail-layout">
-        <div class="content-area">
-          <div class="hero">
-            <img src="https://i.imgur.com/A3o2gIm.png" alt="Protocol Design Banner" style="width:100%; height:auto; object-fit:cover;">
-          </div>
-          <div>
-            <div class="tag">Pharmacology Focus • Seen on TikTok</div>
-            <h1 class="detail-title">Personalized Protocol Design</h1>
-            <p style="color:var(--muted); line-height:1.65; margin-bottom: 24px;">
-              A one-time, deep-dive pharmacological strategy built specifically for your biology. Following intake of your stats and goals, you will receive a private Google Doc via Telegram. 
-            </p>
-            <ul class="feature-list">
-              <li>Height Optimization (If Growth Plates are Open)</li>
-              <li>Physique &amp; Performance Development</li>
-              <li>Craniofacial Bone Growth Protocols</li>
-              <li>Cognitive &amp; Nootropic Stacks</li>
-              <li>Proper Supplement &amp; Ancillary Protocol To Minimize Risk</li>
-            </ul>
-          </div>
-        </div>
-        <aside class="sidebar">
-          <h3 class="sidebar-title">Protocol Blueprint</h3>
-          <div class="price-row">
-            <span class="current" style="font-size:19px">$39.00</span>
-            <span class="badge">ONE TIME</span>
-          </div>
-          <label for="tab-pay-protocol" class="btn btn-primary">Continue to Payment</label>
-          <div class="divider"></div>
-          <label for="tab-home" class="btn btn-outline">Back Home</label>
-        </aside>
-      </div>
-      <div class="legal-text">
-        <strong>Legal Notice:</strong> This protocol is a purely theoretical blueprint designed for academic research and informational purposes only. These substances are not intended for human consumption, and I am not a medical professional. If you choose to ignore medical warnings and apply this information to yourself, you do so at your own risk. I am absolutely not responsible or liable for any health complications, injuries, or legal consequences that may result from your actions. Your purchase constitutes a full and final waiver of all liability against me. 
-      </div>
-    </section>
-
-    <section id="source" class="panel">
+<section id="source" class="panel">
       <div class="detail-layout">
         <div class="content-area">
           <div class="hero">
@@ -809,53 +748,7 @@
         </aside>
       </div>
     </section>
-
-    <section id="pay-protocol" class="panel">
-      <div class="payment-grid">
-        <div class="payment-card">
-          <div class="tag">Payment Instructions</div>
-          <h1 class="detail-title">Personalized Protocol Design — Checkout</h1>
-          <p class="p" style="max-width: 70ch;">
-            Payments for Protocol Design are completed directly in Telegram. Message me with your order and preferred payment method, and I’ll send the payment details.
-          </p>
-
-          <div class="pill-row" aria-label="Accepted payment methods">
-            <span class="pill">Venmo</span>
-            <span class="pill">PayPal</span>
-            <span class="pill">Crypto</span>
-          </div>
-
-          <div class="telegram">
-            <div>
-              <strong>Telegram:</strong>
-              <div style="color:var(--muted); font-size:13.5px;">t.me/willyenhanced</div>
-            </div>
-            <a href="https://t.me/willyenhanced" target="_blank" rel="noopener">Open Chat →</a>
-          </div>
-
-          <ol class="steps">
-            <li>Open Telegram using the link above.</li>
-            <li>Send a message with: <strong>“Protocol Design”</strong> + your preferred payment method (<strong>Venmo</strong>, <strong>PayPal</strong>, or <strong>Crypto</strong>).</li>
-            <li>I’ll confirm the total and send the payment handle/address.</li>
-            <li>After payment, you’ll receive next steps for intake and delivery.</li>
-          </ol>
-
-          <div class="small-note">
-            If you already know your goals (e.g., physique, performance, etc.), include them in your message to speed things up.
-          </div>
-        </div>
-
-        <aside class="sidebar">
-          <h3 class="sidebar-title">Need to change your selection?</h3>
-          <p class="p" style="margin-bottom: 16px;">You can go back at any time.</p>
-          <label for="tab-protocol" class="btn btn-outline">Back to Protocols</label>
-          <div class="divider"></div>
-          <label for="tab-home" class="btn btn-outline">Back Home</label>
-        </aside>
-      </div>
-    </section>
-
-    <section id="pay-source" class="panel">
+<section id="pay-source" class="panel">
       <div class="payment-grid">
         <div class="payment-card">
           <div class="tag">Payment Instructions</div>
