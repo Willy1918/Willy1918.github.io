@@ -328,60 +328,53 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
     
-    .gallery-grid {
+    /* Consistent side-by-side before / after layout for all clients */
+    .client-gallery { display: grid; gap: 20px; }
+    .client-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      overflow: hidden;
+    }
+    .transformation-pair {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
-    .gallery-col { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 16px; 
-    }
-    
     .gallery-item {
       position: relative;
       border-radius: var(--radius-sm);
       overflow: hidden;
       border: 1px solid var(--border);
-      background: #111;
-      min-height: 260px;
+      background: #0a0a0a;
+      aspect-ratio: 3 / 4;
+      min-width: 0;
     }
     .gallery-item img {
+      display: block;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
-      background: #0a0a0a;
     }
-
-    /* Keep the featured image at its natural aspect ratio instead of
-       stretching its card to match the full height of the right column. */
-    .gallery-item.featured-client {
-      align-self: start;
-      min-height: 0;
-    }
-
-    .gallery-item.featured-client img {
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* Paired client before-and-after photos */
-    .transformation-pair {
+    .home-transformation {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      height: 100%;
+      gap: 3px;
+      background: #111;
     }
-    .transformation-pair .gallery-item {
-      min-height: 0;
-    }
-    .transformation-pair .gallery-item img {
-      height: auto;
-      object-fit: contain;
+    .home-transformation img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 62%;
     }
     @media (max-width: 480px) {
-      .transformation-pair { gap: 10px; }
+      .client-card { padding: 10px; }
+      .transformation-pair { gap: 8px; }
+      .gallery-badge { top: 8px; left: 8px; }
     }
 
     .gallery-badge {
@@ -534,11 +527,9 @@
     @media (max-width: 768px) {
       .payment-grid{ grid-template-columns: 1fr; gap: 24px; }
       .detail-layout { grid-template-columns: 1fr; gap: 28px; }
-      .gallery-grid { grid-template-columns: 1fr; }
       .sidebar { position: relative; top: 0; }
       .detail-title { font-size: 26px; }
       .nav label { padding: 10px 14px; font-size: 13px; }
-      .gallery-item { min-height: 220px; }
       .tiktok-promo { flex-direction: column; text-align: center; }
     }
 
@@ -605,7 +596,10 @@
       <div class="home-grid">
         <article class="card">
           <div class="product-img">
-             <img src="https://i.imgur.com/PxJkHd4.jpeg" alt="Coaching Transformation" loading="eager" />
+             <div class="home-transformation" aria-label="Featured client before and after">
+               <img src="https://i.imgur.com/Uf36OgU.png" alt="Featured client before" loading="eager" />
+               <img src="https://i.imgur.com/xeHOkNF.png" alt="Featured client after" loading="eager" />
+             </div>
           </div>
           <div class="product-body">
             <div class="tag">Most Popular</div>
@@ -638,37 +632,71 @@
     <section id="coaching" class="panel">
       <div class="detail-layout">
         <div class="content-area">
-          <div class="gallery-grid">
-            <div class="gallery-item featured-client">
-              <div class="gallery-badge">Featured Client</div>
-              <img src="https://i.imgur.com/PxJkHd4.jpeg" alt="Client Transformation 1">
-            </div>
-            <div class="gallery-col">
-              <div class="gallery-item">
-                <img src="https://i.imgur.com/MGDA08V.png" alt="Client Transformation 2">
-              </div>
-              <div class="gallery-item">
-                <img src="https://i.imgur.com/hlKYBvf.png" alt="Client Transformation 3">
-              </div>
-              <div class="gallery-item">
-                <img src="https://i.imgur.com/FkL1Dcq.jpeg" alt="Client Transformation 4" loading="lazy">
+          <div class="client-gallery" aria-label="Client before and after transformations">
+            <div class="client-card">
+              <div class="transformation-pair">
+                <div class="gallery-item">
+                  <span class="gallery-badge">Before</span>
+                  <img src="https://i.imgur.com/Uf36OgU.png" alt="Client 1 before" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                  <span class="gallery-badge">After</span>
+                  <img src="https://i.imgur.com/xeHOkNF.png" alt="Client 1 after" loading="lazy">
+                </div>
               </div>
             </div>
-          </div>
-          <div class="transformation-pair" aria-label="Additional client before and after transformation">
-            <div class="gallery-item">
-              <div class="gallery-badge">Before</div>
-              <img src="https://i.imgur.com/Uf36OgU.png" alt="Client transformation 5 - before" loading="lazy">
+            <div class="client-card">
+              <div class="transformation-pair">
+                <div class="gallery-item">
+                  <span class="gallery-badge">Before</span>
+                  <img src="https://i.imgur.com/jcmBGH5.png" alt="Client 2 before" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                  <span class="gallery-badge">After</span>
+                  <img src="https://i.imgur.com/ITaZMVz.png" alt="Client 2 after" loading="lazy">
+                </div>
+              </div>
             </div>
-            <div class="gallery-item">
-              <div class="gallery-badge">After</div>
-              <img src="https://i.imgur.com/xeHOkNF.png" alt="Client transformation 5 - after" loading="lazy">
+            <div class="client-card">
+              <div class="transformation-pair">
+                <div class="gallery-item">
+                  <span class="gallery-badge">Before</span>
+                  <img src="https://i.imgur.com/abJ2TYy.png" alt="Client 3 before" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                  <span class="gallery-badge">After</span>
+                  <img src="https://i.imgur.com/3d9OJV7.png" alt="Client 3 after" loading="lazy">
+                </div>
+              </div>
+            </div>
+            <div class="client-card">
+              <div class="transformation-pair">
+                <div class="gallery-item">
+                  <span class="gallery-badge">Before</span>
+                  <img src="https://i.imgur.com/GuYhuyG.png" alt="Client 4 before" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                  <span class="gallery-badge">After</span>
+                  <img src="https://i.imgur.com/QXZbn8D.png" alt="Client 4 after" loading="lazy">
+                </div>
+              </div>
+            </div>
+            <div class="client-card">
+              <div class="transformation-pair">
+                <div class="gallery-item">
+                  <span class="gallery-badge">Before</span>
+                  <img src="https://i.imgur.com/xxr5hwq.png" alt="Client 5 before" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                  <span class="gallery-badge">After</span>
+                  <img src="https://i.imgur.com/1gNbZ4W.png" alt="Client 5 after" loading="lazy">
+                </div>
+              </div>
             </div>
           </div>
           <div>
             <div class="tag">By Will • TikTok @enhancements.explained</div>
             <h1 class="detail-title">Comprehensive 1-On-1 Coaching Package</h1>
-            <ul class="feature-list">
             <ul class="feature-list">
               <li><strong>Fully Customized Protocols Tailored To Your Goals - e.g, Physique Development, Height Optimization, Craniofacial Bone Growth, Performance, Cognition & More</strong></li>
               <li><strong>Ongoing Protocol Adjustments - Based on Progress, Response, Biomarkers, and Personal Preferences</strong></li>
