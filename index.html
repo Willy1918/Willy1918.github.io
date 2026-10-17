@@ -366,6 +366,24 @@
       height: auto;
       object-fit: contain;
     }
+
+    /* Paired client before-and-after photos */
+    .transformation-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .transformation-pair .gallery-item {
+      min-height: 0;
+    }
+    .transformation-pair .gallery-item img {
+      height: auto;
+      object-fit: contain;
+    }
+    @media (max-width: 480px) {
+      .transformation-pair { gap: 10px; }
+    }
+
     .gallery-badge {
       position: absolute; 
       top: 12px; 
@@ -635,6 +653,16 @@
               <div class="gallery-item">
                 <img src="https://i.imgur.com/FkL1Dcq.jpeg" alt="Client Transformation 4" loading="lazy">
               </div>
+            </div>
+          </div>
+          <div class="transformation-pair" aria-label="Additional client before and after transformation">
+            <div class="gallery-item">
+              <div class="gallery-badge">Before</div>
+              <img src="https://i.imgur.com/Uf36OgU.png" alt="Client transformation 5 - before" loading="lazy">
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-badge">After</div>
+              <img src="https://i.imgur.com/xeHOkNF.png" alt="Client transformation 5 - after" loading="lazy">
             </div>
           </div>
           <div>
